@@ -1,4 +1,6 @@
-import type { JSX } from 'react';
+import { useRef, type JSX } from 'react';
+import { useGSAP } from '@gsap/react';
+import { gsap, ScrollTrigger } from './lib/gsap';
 import { Header } from './components/Header';
 import { SkipLink } from './components/SkipLink';
 import { BackToTop } from './components/BackToTop';
@@ -23,13 +25,55 @@ import { Footer } from './sections/Footer';
  * - `<Footer />` is outside `<main>` (it's a `contentinfo` landmark, not
  *   primary content).
  * - `<BackToTop />` floats over everything once the user has scrolled.
+ *
+ * Motion
+ * ------
+ * A single `useGSAP` block at the App scope batches all `[data-reveal]`
+ * elements so they fade up as they enter the viewport. Using `matchMedia`
+ * we disable the motion entirely when the user prefers reduced motion,
+ * which is a hard requirement for accessibility (WCAG 2.3.3).
  */
 function App(): JSX.Element {
+  const mainRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+
+      // Reduced motion: skip animation, just make sure everything is visible.
+      mm.add('(prefers-reduced-motion: reduce)', () => {
+        gsap.set('[data-reveal]', { opacity: 1, clearProps: 'opacity' });
+      });
+
+      // Normal: staggered fade-up on scroll.
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        ScrollTrigger.batch('[data-reveal]', {
+          start: 'top 88%',
+          once: true,
+          onEnter: (batch) => {
+            gsap.fromTo(
+              batch,
+              { autoAlpha: 0, y: 28 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.75,
+                stagger: { each: 0.08, from: 'start' },
+                clearProps: 'transform',
+              }
+            );
+          },
+        });
+      });
+    },
+    { scope: mainRef }
+  );
+
   return (
     <>
       <SkipLink />
       <Header />
-      <main id="main" role="main">
+      <main id="main" ref={mainRef} role="main">
         <Hero />
         <About />
         <Skills />

@@ -53,6 +53,13 @@
     <!-- Google Fonts: Playfair Display (títulos) + Lora (cuerpo) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script>
+      // Mark <html> as JS-enabled so the CSS in index.css can hide elements
+      // marked with [data-reveal] before GSAP has a chance to animate them in.
+      // This avoids a "flash of un-revealed content" on first paint. The script
+      // runs synchronously in <head> before any styling or body markup is parsed.
+      document.documentElement.classList.add('js');
+    </script>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
 
     <!-- JSON-LD: Schema.org Person -->

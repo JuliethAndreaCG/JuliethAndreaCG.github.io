@@ -53,7 +53,7 @@ export function Contact(): JSX.Element {
       <Container>
         <div className="relative mx-auto max-w-4xl">
           {/* Section header */}
-          <div className="text-center">
+          <div data-reveal className="text-center">
             {/* Decorative icon */}
             <div className="relative mx-auto mb-6 inline-flex">
               <div className="absolute -inset-4 animate-ring-pulse rounded-full bg-purple-200 opacity-50" />
@@ -80,11 +80,12 @@ export function Contact(): JSX.Element {
               titleKey="contact.title"
               subtitleKey="contact.subtitle"
               align="center"
+              reveal
             />
           </div>
 
           {/* Form first - full width */}
-          <div className="mt-12 rounded-2xl border border-purple-100 bg-white p-8 shadow-sm">
+          <div data-reveal className="mt-12 rounded-2xl border border-purple-100 bg-white p-8 shadow-sm">
             <h3 className="mb-6 text-center text-xl font-semibold text-slate-900">
               {t('contact.formTitle')}
             </h3>
@@ -194,7 +195,7 @@ export function Contact(): JSX.Element {
           </div>
 
           {/* Social links, Schedule, Zone, QR - centered below */}
-          <div className="mt-8 space-y-6">
+          <div data-reveal className="mt-8 space-y-6">
             {/* Social links */}
             <div className="flex justify-center">
               <div className="rounded-2xl border border-purple-100 bg-white p-6 shadow-sm">

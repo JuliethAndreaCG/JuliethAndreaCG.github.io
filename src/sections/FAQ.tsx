@@ -72,7 +72,7 @@ export function FAQ(): JSX.Element {
       <Container>
         <div className="relative mx-auto max-w-4xl">
           {/* Header */}
-          <div className="mb-12 text-center">
+          <div data-reveal className="mb-12 text-center">
             <div className="mb-4 inline-flex items-center justify-center">
               <div className="absolute h-12 w-12 animate-pulse-soft rounded-full bg-purple-200 opacity-50" />
               <div className="relative flex h-12 w-12 items-center justify-center rounded-full bg-purple-100">
@@ -97,7 +97,7 @@ export function FAQ(): JSX.Element {
           </div>
           
           {/* FAQ Container - más ancho */}
-          <div className="rounded-2xl border border-purple-100 bg-white px-8 py-6 shadow-soft-lg">
+          <div data-reveal className="rounded-2xl border border-purple-100 bg-white px-8 py-6 shadow-soft-lg">
             {FAQ_ITEMS.map((index) => (
               <FAQItem key={index} index={index} />
             ))}

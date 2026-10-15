@@ -53,11 +53,11 @@ export function Projects(): JSX.Element {
       
       <Container>
         <div className="relative">
-          <SectionHeading titleKey="projects.title" subtitleKey="projects.subtitle" />
+          <SectionHeading titleKey="projects.title" subtitleKey="projects.subtitle" reveal />
           
           {/* Videos Grid */}
           {videos.length > 0 && (
-            <div className="mb-12">
+            <div data-reveal className="mb-12">
               <h3 className="mb-6 flex items-center gap-2 text-lg font-semibold text-slate-900">
                 <svg className="h-6 w-6 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>

@@ -7,17 +7,27 @@ type SectionHeadingProps = {
   /** Optional i18n key for the muted subtitle rendered below the title. */
   subtitleKey?: string;
   align?: 'left' | 'center';
+  /**
+   * When true, the heading block is marked with `data-reveal` so the
+   * global ScrollTrigger batch in `App.tsx` fades it up on scroll.
+   * Defaults to false to keep the API explicit.
+   */
+  reveal?: boolean;
 };
 
 export function SectionHeading({
   titleKey,
   subtitleKey,
   align = 'left',
+  reveal = false,
 }: SectionHeadingProps): JSX.Element {
   const { t } = useTranslation();
   const alignment = align === 'center' ? 'text-center mx-auto' : 'text-left';
   return (
-    <div className={`mb-8 max-w-2xl ${alignment}`}>
+    <div
+      data-reveal={reveal ? '' : undefined}
+      className={`mb-8 max-w-2xl ${alignment}`}
+    >
       <h2 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
         {t(titleKey)}
       </h2>

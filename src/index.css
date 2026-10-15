@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * GSAP reveal integration.
+ *
+ * Elements with the `data-reveal` attribute start invisible so GSAP can fade
+ * them in as they enter the viewport. The class `js` is added to <html> by
+ * the inline script in index.html — this keeps the CSS no-op for users with
+ * JavaScript disabled (graceful degradation) and prevents any FOUC when JS
+ * is enabled.
+ */
+html.js [data-reveal] {
+  opacity: 0;
+}
+
 /* REQ-7: smooth anchor scroll for in-page nav. Applied globally so PR 3's
    header links scroll instead of jumping. */
 html {

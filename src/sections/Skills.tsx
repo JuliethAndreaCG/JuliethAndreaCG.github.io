@@ -151,9 +151,9 @@ export function Skills(): JSX.Element {
       <CornerDecoration position="top-left" />
       <CornerDecoration position="bottom-right" />
       <Container>
-        <SectionHeading titleKey="skills.title" subtitleKey="skills.subtitle" />
+        <SectionHeading titleKey="skills.title" subtitleKey="skills.subtitle" reveal />
 
-        <div className="mb-10">
+        <div data-reveal className="mb-10">
           <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-purple-600">
             {t('skills.coreStack')}
           </h3>
@@ -168,7 +168,7 @@ export function Skills(): JSX.Element {
           </div>
         </div>
 
-        <div>
+        <div data-reveal>
           <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-slate-500">
             {t('skills.secondaryStack')}
           </h3>

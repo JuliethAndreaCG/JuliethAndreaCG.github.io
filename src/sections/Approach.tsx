@@ -64,14 +64,14 @@ export function Approach(): JSX.Element {
       <Blob className="-right-20 bottom-0 h-80 w-80" color="violet" />
       <FloatingCircles />
       <Container>
-        <SectionHeading titleKey="approach.title" subtitleKey="approach.subtitle" />
+        <SectionHeading titleKey="approach.title" subtitleKey="approach.subtitle" reveal />
         
-        <p className="mb-12 max-w-5xl text-lg text-slate-600">
+        <p data-reveal className="mb-12 max-w-5xl text-lg text-slate-600">
           {t('approach.description')}
         </p>
 
         {/* Modalities */}
-        <div className="mb-16">
+        <div data-reveal className="mb-16">
           <h3 className="mb-6 text-center text-sm font-bold uppercase tracking-wider text-purple-600">
             {t('approach.modalities.title')}
           </h3>
@@ -112,7 +112,7 @@ export function Approach(): JSX.Element {
         </div>
 
         {/* Topics */}
-        <div>
+        <div data-reveal>
           <h3 className="mb-6 text-center text-sm font-bold uppercase tracking-wider text-purple-600">
             {t('approach.topics.title')}
           </h3>

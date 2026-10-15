@@ -19,9 +19,9 @@ export function Experience(): JSX.Element {
       
       <Container>
         <div className="relative">
-          <SectionHeading titleKey="experience.title" subtitleKey="experience.subtitle" />
+          <SectionHeading titleKey="experience.title" subtitleKey="experience.subtitle" reveal />
           
-          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+          <div data-reveal className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
             {experience.map((item) => (
               <article
                 key={item.id}

@@ -67,21 +67,21 @@ export function About(): JSX.Element {
       
       <Container>
         <div className="relative">
-          <SectionHeading titleKey="about.title" subtitleKey="about.lead" />
+          <SectionHeading titleKey="about.title" subtitleKey="about.lead" reveal />
           
           <div className="max-w-5xl">
-            <p className="mb-4 text-base leading-relaxed text-slate-700 sm:text-lg">
+            <p data-reveal className="mb-4 text-base leading-relaxed text-slate-700 sm:text-lg">
               {t('about.body')}
             </p>
-            <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
+            <p data-reveal className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
               {t('about.population')}
             </p>
-            <p className="mb-8 text-base leading-relaxed text-slate-700 sm:text-lg">
+            <p data-reveal className="mb-8 text-base leading-relaxed text-slate-700 sm:text-lg">
               {t('about.ai')}
             </p>
             
             {/* WhatsApp Button - Blanco con borde morado */}
-            <div className="mb-12">
+            <div data-reveal className="mb-12">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -104,6 +104,7 @@ export function About(): JSX.Element {
             {HIGHLIGHTS.map((h, index) => (
               <div
                 key={h.valueKey}
+                data-reveal
                 className="group relative overflow-hidden rounded-xl border border-purple-100 bg-white p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(124,58,237,0.15)] hover:-translate-y-1 hover:scale-[1.02]"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
@@ -141,6 +142,7 @@ export function About(): JSX.Element {
 
           {/* Marco regulatorio y fuentes (R02 — citation density) */}
           <aside
+            data-reveal
             aria-labelledby="about-references-heading"
             className="mt-10 rounded-lg border border-purple-100 bg-purple-50/40 p-5"
           >

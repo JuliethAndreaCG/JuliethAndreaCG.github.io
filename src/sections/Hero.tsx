@@ -1,5 +1,7 @@
-import type { JSX, MouseEvent } from 'react';
+import { useRef, type JSX, type MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useGSAP } from '@gsap/react';
+import { gsap } from '../lib/gsap';
 import { profile } from '../data/profile';
 import { Button } from '../components/Button';
 import { Container } from '../components/Container';
@@ -96,6 +98,67 @@ function DecorativeShapes(): JSX.Element {
 
 export function Hero(): JSX.Element {
   const { t } = useTranslation();
+  const rootRef = useRef<HTMLElement>(null);
+
+  // Mount-based entrance: photo first, then greeting → name → headline →
+  // tagline → CTAs. Skipped under prefers-reduced-motion.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: reduce)', () => {
+        gsap.set(
+          [
+            '[data-hero-photo]',
+            '[data-hero-greeting]',
+            '[data-hero-name]',
+            '[data-hero-headline]',
+            '[data-hero-tagline]',
+            '[data-hero-cta]',
+          ],
+          { autoAlpha: 1, clearProps: 'transform' }
+        );
+      });
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.from('[data-hero-photo]', {
+          autoAlpha: 0,
+          scale: 0.92,
+          duration: 0.9,
+        })
+          .from(
+            '[data-hero-greeting]',
+            { autoAlpha: 0, y: 14, duration: 0.5 },
+            0.25
+          )
+          .from(
+            '[data-hero-name]',
+            { autoAlpha: 0, y: 24, duration: 0.65 },
+            0.35
+          )
+          .from(
+            '[data-hero-headline]',
+            { autoAlpha: 0, y: 16, duration: 0.5 },
+            0.5
+          )
+          .from(
+            '[data-hero-tagline]',
+            { autoAlpha: 0, y: 16, duration: 0.5 },
+            0.6
+          )
+          .from(
+            '[data-hero-cta]',
+            {
+              autoAlpha: 0,
+              y: 16,
+              duration: 0.5,
+              stagger: 0.12,
+            },
+            0.7
+          );
+      });
+    },
+    { scope: rootRef }
+  );
 
   const handleScrollTo =
     (id: string) =>
@@ -106,6 +169,7 @@ export function Hero(): JSX.Element {
 
   return (
     <section
+      ref={rootRef}
       id="hero"
       aria-labelledby="hero-heading"
       className="relative flex min-h-[90vh] items-center overflow-hidden bg-gradient-to-br from-white via-purple-50/40 to-indigo-50/20 px-4 py-20 sm:px-6 lg:px-8"
@@ -115,7 +179,7 @@ export function Hero(): JSX.Element {
       <Container>
         <div className="relative mx-auto flex w-full max-w-5xl flex-col items-start gap-8 sm:flex-row sm:items-center">
           {/* Photo with decorative ring */}
-          <div className="relative flex-shrink-0">
+          <div data-hero-photo className="relative flex-shrink-0">
             {/* Animated ring */}
             <div className="absolute -inset-6 animate-pulse-soft rounded-full bg-gradient-to-br from-purple-300 via-purple-200 to-indigo-200 opacity-40 blur-md" />
             <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-purple-200 to-purple-100 opacity-50 blur-sm" />
@@ -138,30 +202,48 @@ export function Hero(): JSX.Element {
           </div>
           
           <div className="flex-1">
-            <p className="mb-2 animate-fade-in text-sm font-medium uppercase tracking-widest text-purple-600">
+            <p
+              data-hero-greeting
+              className="mb-2 text-sm font-medium uppercase tracking-widest text-purple-600"
+            >
               {t('hero.greeting')}
             </p>
             <h1
+              data-hero-name
               id="hero-heading"
               className="mb-3 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
             >
               {profile.fullName}
             </h1>
-            <p className="mb-4 text-xl font-semibold text-purple-600 sm:text-2xl">
+            <p
+              data-hero-headline
+              className="mb-4 text-xl font-semibold text-purple-600 sm:text-2xl"
+            >
               {t(profile.headlineKey)}
             </p>
-            <p className="mb-6 max-w-2xl text-base text-slate-600 sm:text-lg">
+            <p
+              data-hero-tagline
+              className="mb-6 max-w-2xl text-base text-slate-600 sm:text-lg"
+            >
               {t(profile.taglineKey)}
             </p>
             
             {/* CTA Buttons with WhatsApp */}
             <div className="flex flex-wrap gap-4">
-              <a href="#approach" onClick={handleScrollTo('approach')}>
+              <a
+                data-hero-cta
+                href="#approach"
+                onClick={handleScrollTo('approach')}
+              >
                 <Button variant="primary" size="lg">
                   {t('hero.ctaPrimary')}
                 </Button>
               </a>
-              <a href="#contact" onClick={handleScrollTo('contact')}>
+              <a
+                data-hero-cta
+                href="#contact"
+                onClick={handleScrollTo('contact')}
+              >
                 <Button variant="secondary" size="lg">
                   {t('hero.ctaSecondary')}
                 </Button>
