@@ -82,18 +82,27 @@ npm run preview
 
 ## Deploy
 
-El deploy es automático vía GitHub Actions en cada push a `main`. El workflow hace typecheck, build, y publica el resultado en GitHub Pages.
+El deploy es automático vía GitHub Actions en cada push a `main`. El workflow hace typecheck, build y publica el bundle en GitHub Pages usando las Actions oficiales (`configure-pages` + `upload-pages-artifact` + `deploy-pages`).
 
 ### Setup inicial (una sola vez)
 
-1. Ir a **Settings → Pages** del repositorio.
-2. En **Source**, dejar **"Deploy from a branch"**.
-3. En **Branch**, elegir **`gh-pages`** y folder **`/ (root)`** (no `main`).
-4. Guardar.
+No requiere pasos manuales. La Action `configure-pages` detecta la configuración actual de Pages y la migra automáticamente al build type "GitHub Actions". Si el repo venía sirviendo desde una rama (`main` o `gh-pages`), la primera corrida del workflow reemplaza esa configuración.
 
-El workflow `Deploy to GitHub Pages` buildea con Vite y pushea el contenido de `dist/` a la rama `gh-pages` mediante `peaceiris/actions-gh-pages`. GitHub Pages sirve esa rama, así que cada push a `main` regenera el sitio.
+> Si el repo tenía configurada la rama `gh-pages` intermedia (flujo legacy con `peaceiris/actions-gh-pages`), ya no se necesita: este workflow sube el build como artifact en lugar de pushearlo a una rama. La rama `gh-pages` quedará huérfana pero es inofensiva.
 
-> Si en el futuro querés migrar al flujo oficial `actions/deploy-pages` (más simple, sin la rama `gh-pages` intermedia), cambiá Source a "GitHub Actions" y reemplazá el step de peaceiris por `actions/deploy-pages@v4`. El workflow actual está pensado para que funcione con cualquier dropdown de Pages sin requerirte tocar YAML después.
+### Flujo normal
+
+1. Commit y push a `main`.
+2. GitHub Actions corre: install → typecheck → build → upload artifact → deploy.
+3. En ~1-2 minutos el sitio se actualiza en `https://juliethandreacg.github.io/`.
+
+### URLs de verificación post-deploy
+
+- Home: `https://juliethandreacg.github.io/`
+- OG image: `https://juliethandreacg.github.io/og-banner.jpg` (debe devolver 200)
+- Sitemap: `https://juliethandreacg.github.io/sitemap.xml`
+- SW: `https://juliethandreacg.github.io/sw.js` (debe contener `psicologa-julieth-v4`)
+- Política de privacidad: `https://juliethandreacg.github.io/politica-de-privacidad.html`
 
 ### Flujo normal
 

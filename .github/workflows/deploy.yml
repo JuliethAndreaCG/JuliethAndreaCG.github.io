@@ -12,28 +12,39 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# Required permissions for the official Pages deploy flow:
+#   contents: read  -> checkout the repo
+#   pages: write    -> deploy the artifact to Pages
+#   id-token: write -> required by actions/configure-pages + actions/deploy-pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 # Strategy
 # --------
-# We push the built dist/ to a dedicated `gh-pages` branch via the
-# well-known peaceiris/actions-gh-pages action. GitHub Pages is then
-# configured (one-time, in the web UI) to serve from that branch.
+# Use the official GitHub Actions Pages deploy flow instead of the old
+# peaceiris/actions-gh-pages pattern. The configure-pages action can
+# detect the repo's current configuration and migrate it to the
+# "GitHub Actions" build type on its own, so no UI toggle is needed
+# in Settings -> Pages even if the repo was previously serving from
+# a branch.
 #
-# ONE-TIME SETUP
-#   1. Open https://github.com/JuliethAndreaCG/JuliethAndreaCG.github.io/settings/pages
-#   2. Set Source = "Deploy from a branch"
-#   3. Branch = "gh-pages"   (NOT "main")
-#   4. Folder = "/ (root)"
-#   5. Click Save
+# Steps
+#   1. checkout, install, typecheck, build (standard CI).
+#   2. actions/configure-pages -> idempotently enables the workflow
+#      build_type. Safe to run on every push.
+#   3. actions/upload-pages-artifact -> packages ./dist.
+#   4. actions/deploy-pages -> publishes the artifact. Emits
+#      steps.deployment.outputs.page_url for the summary step.
 #
-# Why not actions/deploy-pages (the official one)?
-#   That action requires Pages Source = "GitHub Actions" and only works
-#   with that setting. Since the only difference is one dropdown change
-#   in the web UI, this approach (peaceiris to gh-pages) gives us the
-#   same result with the same one-time setup, and keeps the workflow
-#   self-contained and reproducible.
-permissions:
-  contents: write
-
+# Why this is better than committing dist/ to main
+#   * The repo stays clean: build output is uploaded as a workflow
+#     artifact, never committed.
+#   * Local `npm run dev` keeps working — the root index.html stays
+#     the Vite dev template.
+#   * The Pages source becomes "GitHub Actions" automatically, so
+#     future deploys are fully code-driven.
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -56,8 +67,20 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Deployment summary
+        if: steps.deployment.conclusion == 'success'
+        run: |
+          echo "::notice::Deployed to ${{ steps.deployment.outputs.page_url }}"
+          echo "Page URL: ${{ steps.deployment.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
