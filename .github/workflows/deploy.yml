@@ -98,11 +98,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # -A includes the flattened public/* files (og-banner.jpg,
-          # sw.js, manifest.json, sitemap.xml, robots.txt, etc.) that
-          # were copied to the repo root in the previous step. -f lets
-          # us add the gitignored dist/ and assets/ build output.
-          git add -fA
+          # Add all tracked-file modifications and the untracked public/*
+          # files that were copied to the repo root in the previous step
+          # (og-banner.jpg, sw.js, manifest.json, sitemap.xml, robots.txt,
+          # politica-de-privacidad.html, icons, 404.html, etc.). -A skips
+          # gitignored paths, which is what we want — node_modules and
+          # other ignored content stays out of the repo.
+          git add -A
+          # Force-add the gitignored build output (dist/, assets/) so
+          # GitHub Pages can serve them from the main branch.
+          git add -f dist assets
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
