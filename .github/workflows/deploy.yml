@@ -68,30 +68,34 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Overwrite root index.html with the built version
-        # Pages serves / from the root of the main branch. The root
-        # index.html is the Vite dev template (references /src/main.tsx
-        # which does not exist in production), so we replace it with
-        # the built index.html that references /assets/index-*.js (which
-        # we will commit in the next step). After the first deploy,
-        # `npm run dev` locally breaks because the dev template is gone;
-        # restore it with `git checkout HEAD~1 -- index.html`.
-        run: cp dist/index.html index.html
+      - name: Flatten build output to repo root
+        # GitHub Pages serves files at their actual path in the source
+        # branch. The site references /og-banner.jpg, /sw.js, /assets/...
+        # but those exist in the source tree under /public/ and /dist/.
+        # Copy them to the branch root so Pages can serve them at the
+        # URLs the site expects.
+        run: |
+          # Built HTML becomes the root index.html (Pages serves / from here).
+          cp dist/index.html index.html
+          # Built bundles (JS, CSS) live under /assets in dist/ — copy to root.
+          mkdir -p assets
+          cp -r dist/assets/. assets/
+          # Static assets from public/ (og-banner.jpg, sw.js, manifest.json,
+          # sitemap.xml, robots.txt, politica-de-privacidad.html, icons, etc.)
+          # get copied to the branch root so /og-banner.jpg etc. resolve.
+          cp -r public/. .
 
-      - name: Force-deploy dist/ to main
+      - name: Force-deploy to main
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # -f overrides the dist/ entry in .gitignore. We want the
-          # build output committed so GitHub Pages (which serves from
-          # the main branch) can pick it up without any UI toggle.
-          git add -f dist
-          # The root index.html was overwritten with the built version
-          # in the previous step. Stage it explicitly (it is already
-          # tracked so -f is not strictly required, but be defensive).
-          git add -f index.html
+          # -f overrides the .gitignore entries for dist/ and assets/.
+          # We want the build output committed so GitHub Pages (which
+          # serves from the main branch) can pick it up without any UI
+          # toggle.
+          git add -f index.html assets dist
           if git diff --cached --quiet; then
-            echo "No dist changes to commit"
+            echo "No changes to commit"
           else
             git commit -m "ci: deploy build output to main [skip ci]"
             git push origin HEAD:main
