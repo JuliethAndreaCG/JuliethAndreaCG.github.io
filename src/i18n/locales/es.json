@@ -12,7 +12,7 @@
     "greeting": "Hola, soy",
     "name": "Julieth Andrea Caicedo",
     "headline": "Psicóloga | Analista de Selección y Contratación",
-    "tagline": "Cali, Colombia · Atención presencial y remota",
+    "tagline": "Ginebra, Valle del Cauca · Atención online y presencial",
     "ctaPrimary": "Conocer más",
     "ctaSecondary": "Contactar"
   },
@@ -191,6 +191,10 @@
     "cta": "Escribir",
     "responseTime": "Te respondo en menos de 24 horas",
     "privacyNote": "Tu información es tratada con confidencialidad",
+    "zone": "Zona de atención",
+    "zoneDescription": "Valle del Cauca y alrededores",
+    "serviceArea": "Online en todo Colombia",
+    "scanQR": "Escanea para contactarme por WhatsApp",
     "schedule": "Horario de atención",
     "scheduleHours": {
       "weekdays": "Lunes a Viernes",

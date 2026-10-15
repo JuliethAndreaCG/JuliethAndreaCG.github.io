@@ -25,11 +25,8 @@ export function Experience(): JSX.Element {
             {experience.map((item) => (
               <article
                 key={item.id}
-                className="group relative overflow-hidden rounded-xl border border-purple-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-xl border border-purple-100 bg-white p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(124,58,237,0.15)] hover:-translate-y-1 hover:scale-[1.02]"
               >
-                {/* Top accent line */}
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-400 via-indigo-400 to-purple-400" />
-                
                 {/* Header */}
                 <header className="mb-4">
                   <div className="mb-2 flex items-center gap-2">

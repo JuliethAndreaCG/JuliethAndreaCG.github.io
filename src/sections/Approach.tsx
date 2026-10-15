@@ -79,7 +79,7 @@ export function Approach(): JSX.Element {
             {MODALITIES.map((mod) => (
               <div
                 key={mod}
-                className="rounded-xl border border-purple-100 bg-white p-6 text-center shadow-sm"
+                className="rounded-xl border border-purple-100 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(124,58,237,0.12)] hover:-translate-y-1"
               >
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-purple-100">
                   <svg
@@ -120,7 +120,7 @@ export function Approach(): JSX.Element {
             {TOPICS.map((topic) => (
               <div
                 key={topic.key}
-                className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4"
+                className="flex items-start gap-3 rounded-lg border border-purple-100 bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-[0_4px_20px_rgba(124,58,237,0.1)] hover:-translate-y-0.5"
               >
                 <TopicIcon name={topic.icon} />
                 <div>

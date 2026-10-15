@@ -12,7 +12,7 @@
     "greeting": "Hi, I'm",
     "name": "Julieth Andrea Caicedo",
     "headline": "Psychologist | Talent Acquisition Analyst",
-    "tagline": "Cali, Colombia · In-person and remote care",
+    "tagline": "Ginebra, Valle del Cauca · Online and in-person care",
     "ctaPrimary": "Learn more",
     "ctaSecondary": "Contact"
   },
@@ -191,6 +191,10 @@
     "cta": "Reach out",
     "responseTime": "I respond within 24 hours",
     "privacyNote": "Your information is treated with confidentiality",
+    "zone": "Service area",
+    "zoneDescription": "Valle del Cauca and surrounding areas",
+    "serviceArea": "Online throughout Colombia",
+    "scanQR": "Scan to contact me on WhatsApp",
     "schedule": "Office hours",
     "scheduleHours": {
       "weekdays": "Monday to Friday",

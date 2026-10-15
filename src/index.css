@@ -224,3 +224,52 @@ section {
 .shadow-soft-lg {
   box-shadow: 0 8px 30px rgba(124, 58, 237, 0.15);
 }
+
+/* Enhanced smooth transitions for professional feel */
+a, button {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Elegant hover effects for links */
+a:hover {
+  opacity: 0.85;
+}
+
+/* Subtle scale on hover for interactive elements */
+.interactive-hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.2);
+}
+
+/* Smooth scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4b5fd;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
+
+/* Selection color */
+::selection {
+  background: #c4b5fd;
+  color: #4c1d95;
+}

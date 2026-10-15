@@ -83,70 +83,13 @@ export function Contact(): JSX.Element {
             />
           </div>
 
-          {/* Two column layout */}
-          <div className="mt-12 grid gap-12 lg:grid-cols-2">
-            {/* Left column - Social links and schedule */}
-            <div className="space-y-8">
-              {/* Social links */}
-              <div className="rounded-2xl border border-purple-100 bg-white p-6 shadow-soft">
-                <SocialLinks />
-              </div>
+          {/* Form first - full width */}
+          <div className="mt-12 rounded-2xl border border-purple-100 bg-white p-8 shadow-sm">
+            <h3 className="mb-6 text-center text-xl font-semibold text-slate-900">
+              {t('contact.formTitle')}
+            </h3>
 
-              {/* Schedule */}
-              <div className="rounded-2xl border border-purple-100 bg-white p-6 shadow-soft">
-                <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-900">
-                  <svg className="h-5 w-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {t('contact.schedule')}
-                </h3>
-                <div className="space-y-2 text-slate-600">
-                  <div className="flex items-center gap-3">
-                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                    <span className="flex-1">{t('contact.scheduleHours.weekdays')}</span>
-                    <span className="font-medium text-slate-900">8:00 AM - 5:00 PM</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
-                    <span className="flex-1">{t('contact.scheduleHours.weekend')}</span>
-                    <span className="font-medium text-slate-900">9:00 AM - 12:00 PM</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="h-2 w-2 rounded-full bg-red-400"></div>
-                    <span className="flex-1">{t('contact.closed')}</span>
-                    <span className="font-medium text-slate-400">-</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Additional info */}
-              <div className="flex flex-col items-center gap-4 text-center text-sm text-slate-500">
-                <p>{t('contact.responseTime')}</p>
-                <div className="flex items-center gap-2">
-                  <svg
-                    className="h-4 w-4 text-purple-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
-                    />
-                  </svg>
-                  <span>{t('contact.privacyNote')}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right column - Contact form */}
-            <div className="rounded-2xl border border-purple-100 bg-white p-6 shadow-soft">
-              <h3 className="mb-6 text-lg font-semibold text-slate-900">
-                {t('contact.formTitle')}
-              </h3>
-
+            <div className="mx-auto max-w-2xl">
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name */}
                 <div>
@@ -238,7 +181,90 @@ export function Contact(): JSX.Element {
                     t('contact.formSubmit')
                   )}
                 </button>
+                
+                {/* Privacy note */}
+                <p className="mt-4 flex items-center justify-center gap-2 text-center text-xs text-slate-500">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                  </svg>
+                  {t('contact.privacyNote')}
+                </p>
               </form>
+            </div>
+          </div>
+
+          {/* Social links, Schedule, Zone, QR - centered below */}
+          <div className="mt-8 space-y-6">
+            {/* Social links */}
+            <div className="flex justify-center">
+              <div className="rounded-2xl border border-purple-100 bg-white p-6 shadow-sm">
+                <SocialLinks />
+              </div>
+            </div>
+
+            {/* Schedule, Zone, QR in grid */}
+            <div className="grid gap-6 md:grid-cols-3">
+              {/* Schedule */}
+              <div className="rounded-2xl border border-purple-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900">
+                  <svg className="h-5 w-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {t('contact.schedule')}
+                </h3>
+                <div className="space-y-2 text-sm text-slate-600">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                    <span className="flex-1">{t('contact.scheduleHours.weekdays')}</span>
+                    <span className="font-medium text-slate-900">8AM-5PM</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                    <span className="flex-1">{t('contact.scheduleHours.weekend')}</span>
+                    <span className="font-medium text-slate-900">9AM-12PM</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-red-400"></div>
+                    <span className="flex-1">{t('contact.closed')}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Service Zone */}
+              <div className="rounded-2xl border border-purple-100 bg-white p-6 shadow-sm">
+                <h3 className="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900">
+                  <svg className="h-5 w-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                  </svg>
+                  {t('contact.zone')}
+                </h3>
+                <div className="space-y-2 text-sm text-slate-600">
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-purple-500"></div>
+                    <span>{t('contact.zoneDescription')}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-purple-500"></div>
+                    <span>{t('contact.serviceArea')}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* QR Code */}
+              <div className="flex flex-col items-center rounded-2xl border border-purple-100 bg-white p-6 shadow-sm">
+                <img 
+                  src="/qr-whatsapp.png" 
+                  alt="WhatsApp QR Code" 
+                  className="h-32 w-32 rounded-lg"
+                />
+                <p className="mt-3 text-center text-sm font-medium text-slate-700">
+                  {t('contact.scanQR')}
+                </p>
+                <p className="mt-1 text-center text-xs text-slate-500">
+                  {t('contact.responseTime')}
+                </p>
+              </div>
             </div>
           </div>
         </div>

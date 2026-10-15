@@ -1,9 +1,24 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt para PsicoJuliethCG - Esencia&Mental
+# https://juliethandreacg.github.io
+
 User-agent: *
 Allow: /
 
-# Sitemap
+# Archivos estáticos permitidos
+Allow: /assets/
+Allow: /foto.jpg
+Allow: /og-banner.jpg
+Allow: /qr-whatsapp.png
+Allow: /favicon.svg
+Allow: /manifest.json
+
+# Disallow para archivos temporales o de desarrollo
+Disallow: /src/
+Disallow: /*.map$
+Disallow: /node_modules/
+
+# Sitemap principal
 Sitemap: https://juliethandreacg.github.io/sitemap.xml
 
-# Crawl-delay (opcional, para no saturar el servidor)
+# Información adicional
 Crawl-delay: 1

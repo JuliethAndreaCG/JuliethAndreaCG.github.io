@@ -108,7 +108,7 @@ export function SocialLinks(): JSX.Element {
               target={isEmail ? undefined : '_blank'}
               rel={isEmail ? undefined : 'noopener noreferrer'}
               aria-label={t(social.labelKey)}
-              className="inline-flex items-center gap-2 rounded-full border-2 border-purple-200 bg-white px-4 py-2 text-purple-600 transition-all hover:border-purple-400 hover:bg-purple-50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-2 rounded-full border border-purple-100 bg-white px-4 py-2 text-purple-600 shadow-sm transition-all duration-300 hover:bg-purple-50 hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
             >
               <Icon id={social.id} />
               <span className="text-sm font-medium">{t(social.labelKey)}</span>

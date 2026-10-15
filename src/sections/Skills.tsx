@@ -55,7 +55,7 @@ function CoreStackCard({
   return (
     <div
       title={tooltipText}
-      className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:border-purple-500 hover:shadow-md"
+      className="flex flex-col items-center justify-center rounded-2xl border border-purple-100 bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-[0_8px_30px_rgba(124,58,237,0.15)] hover:-translate-y-1 hover:scale-[1.02]"
     >
       <SkillIcon name={iconName} />
       <span className="mt-2 text-sm font-bold text-slate-800">{skill.name}</span>

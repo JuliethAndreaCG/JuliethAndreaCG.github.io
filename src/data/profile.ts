@@ -7,7 +7,8 @@ export const profile = {
   fullName: 'Psicóloga Julieth C. Goyeneche',
   initials: 'JCG',
   location: {
-    city: 'Cali',
+    city: 'Ginebra',
+    region: 'Valle del Cauca',
     country: 'Colombia',
     remote: true,
   },
@@ -24,7 +25,7 @@ export const profile = {
     },
     {
       id: 'facebook',
-      url: 'https://m.me/PsicoJuliethCG?text=Hola%20Julieth%2C%20te%20contacto%20desde%20tu%20sitio%20web.%20Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20tus%20servicios%20psicol%C3%B3gicos.',
+      url: 'https://www.facebook.com/PsicoJuliethCG/',
       labelKey: 'socials.facebook',
     },
     {
