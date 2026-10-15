@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#a855f7"/>
+    </linearGradient>
+  </defs>
+  <!-- Círculo de fondo -->
+  <circle cx="50" cy="50" r="48" fill="url(#bg)"/>
+  <!-- Símbolo Psi (Ψ) de psicología -->
+  <g fill="white">
+    <!-- Línea vertical del Psi -->
+    <rect x="44" y="18" width="6" height="64" rx="3"/>
+    <!-- Brazos superiores del Psi -->
+    <path d="M26 32 Q44 52 50 40 Q56 52 74 32" fill="none" stroke="white" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>
