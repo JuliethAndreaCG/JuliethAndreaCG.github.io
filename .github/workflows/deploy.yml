@@ -5,17 +5,34 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Allow one concurrent deployment, queueing new runs after the current one finishes.
-# Do NOT cancel in-progress runs — that can leave the site in an inconsistent state.
+# Allow one concurrent deployment, queueing new runs after the current
+# one finishes. Do NOT cancel in-progress runs — that can leave the
+# site in an inconsistent state.
 concurrency:
   group: pages
   cancel-in-progress: false
 
-# Required permissions for actions/deploy-pages@v4
+# Strategy
+# --------
+# We push the built dist/ to a dedicated `gh-pages` branch via the
+# well-known peaceiris/actions-gh-pages action. GitHub Pages is then
+# configured (one-time, in the web UI) to serve from that branch.
+#
+# ONE-TIME SETUP
+#   1. Open https://github.com/JuliethAndreaCG/JuliethAndreaCG.github.io/settings/pages
+#   2. Set Source = "Deploy from a branch"
+#   3. Branch = "gh-pages"   (NOT "main")
+#   4. Folder = "/ (root)"
+#   5. Click Save
+#
+# Why not actions/deploy-pages (the official one)?
+#   That action requires Pages Source = "GitHub Actions" and only works
+#   with that setting. Since the only difference is one dropdown change
+#   in the web UI, this approach (peaceiris to gh-pages) gives us the
+#   same result with the same one-time setup, and keeps the workflow
+#   self-contained and reproducible.
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 jobs:
   build:
@@ -39,18 +56,8 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

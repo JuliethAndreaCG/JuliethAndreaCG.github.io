@@ -87,10 +87,13 @@ El deploy es automático vía GitHub Actions en cada push a `main`. El workflow 
 ### Setup inicial (una sola vez)
 
 1. Ir a **Settings → Pages** del repositorio.
-2. En **Source**, cambiar de "Deploy from a branch" a **"GitHub Actions"**.
-3. Guardar.
+2. En **Source**, dejar **"Deploy from a branch"**.
+3. En **Branch**, elegir **`gh-pages`** y folder **`/ (root)`** (no `main`).
+4. Guardar.
 
-Sin este toggle, el workflow `Deploy to GitHub Pages` falla porque Pages está en modo legacy.
+El workflow `Deploy to GitHub Pages` buildea con Vite y pushea el contenido de `dist/` a la rama `gh-pages` mediante `peaceiris/actions-gh-pages`. GitHub Pages sirve esa rama, así que cada push a `main` regenera el sitio.
+
+> Si en el futuro querés migrar al flujo oficial `actions/deploy-pages` (más simple, sin la rama `gh-pages` intermedia), cambiá Source a "GitHub Actions" y reemplazá el step de peaceiris por `actions/deploy-pages@v4`. El workflow actual está pensado para que funcione con cualquier dropdown de Pages sin requerirte tocar YAML después.
 
 ### Flujo normal
 
