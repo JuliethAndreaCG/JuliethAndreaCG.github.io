@@ -14,7 +14,7 @@ concurrency:
 
 # Required permissions for the official Pages deploy flow:
 #   contents: read  -> checkout the repo
-#   pages: write    -> deploy the artifact to Pages
+#   pages: write    -> migrate build_type + deploy the artifact
 #   id-token: write -> required by actions/configure-pages + actions/deploy-pages
 permissions:
   contents: read
@@ -23,19 +23,22 @@ permissions:
 
 # Strategy
 # --------
-# Use the official GitHub Actions Pages deploy flow instead of the old
-# peaceiris/actions-gh-pages pattern. The configure-pages action can
-# detect the repo's current configuration and migrate it to the
-# "GitHub Actions" build type on its own, so no UI toggle is needed
-# in Settings -> Pages even if the repo was previously serving from
-# a branch.
+# Use the official GitHub Actions Pages deploy flow. The deploy flow
+# requires Pages to be configured with build_type = "workflow". The
+# repo was originally on build_type = "legacy" (serving from a
+# branch), so this workflow first migrates the build_type via the
+# GitHub API and then runs the deploy steps.
+#
+# Migration happens idempotently: PUT /repos/{owner}/{repo}/pages with
+# build_type=workflow. If the repo is already on workflow build_type
+# the PUT is a no-op (the API accepts the same body either way).
 #
 # Steps
-#   1. checkout, install, typecheck, build (standard CI).
-#   2. actions/configure-pages -> idempotently enables the workflow
-#      build_type. Safe to run on every push.
-#   3. actions/upload-pages-artifact -> packages ./dist.
-#   4. actions/deploy-pages -> publishes the artifact. Emits
+#   1. checkout, install, typecheck, build.
+#   2. Migrate Pages to workflow build_type (idempotent).
+#   3. actions/configure-pages -> idempotently confirms the config.
+#   4. actions/upload-pages-artifact -> packages ./dist.
+#   5. actions/deploy-pages -> publishes the artifact. Emits
 #      steps.deployment.outputs.page_url for the summary step.
 #
 # Why this is better than committing dist/ to main
@@ -72,6 +75,27 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Migrate Pages to workflow build type
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          echo "Checking current Pages config for ${REPO}..."
+          current=$(gh api "/repos/${REPO}/pages" --jq '.build_type')
+          echo "Current build_type: ${current}"
+          if [ "$current" = "workflow" ]; then
+            echo "Already on workflow build_type, skipping migration."
+          else
+            echo "Migrating build_type from '${current}' to 'workflow'..."
+            gh api \
+              --method PUT \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "/repos/${REPO}/pages" \
+              -f "build_type=workflow"
+            echo "Migration complete."
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
