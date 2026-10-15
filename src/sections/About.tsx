@@ -12,11 +12,37 @@ type Highlight = {
 };
 
 const HIGHLIGHTS: readonly Highlight[] = [
-  { valueKey: 'about.highlights.years', labelKey: 'about.highlights.yearsLabel', icon: '⏱️' },
-  { valueKey: 'about.highlights.families', labelKey: 'about.highlights.familiesLabel', icon: '👨‍👩‍👧‍👦' },
-  { valueKey: 'about.highlights.candidates', labelKey: 'about.highlights.candidatesLabel', icon: '🎯' },
-  { valueKey: 'about.highlights.patients', labelKey: 'about.highlights.patientsLabel', icon: '💚' },
+  { valueKey: 'about.highlights.years', labelKey: 'about.highlights.yearsLabel', icon: 'clock' },
+  { valueKey: 'about.highlights.families', labelKey: 'about.highlights.familiesLabel', icon: 'family' },
+  { valueKey: 'about.highlights.candidates', labelKey: 'about.highlights.candidatesLabel', icon: 'target' },
+  { valueKey: 'about.highlights.patients', labelKey: 'about.highlights.patientsLabel', icon: 'heart' },
 ];
+
+const HighlightIcon = ({ name }: { name: string }) => {
+  const icons: Record<string, JSX.Element> = {
+    clock: (
+      <svg className="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    family: (
+      <svg className="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+      </svg>
+    ),
+    target: (
+      <svg className="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+      </svg>
+    ),
+    heart: (
+      <svg className="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+      </svg>
+    ),
+  };
+  return icons[name] || icons.clock;
+};
 
 export function About(): JSX.Element {
   const { t } = useTranslation();
@@ -85,8 +111,8 @@ export function About(): JSX.Element {
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-400 via-purple-500 to-indigo-400 opacity-0 transition-opacity group-hover:opacity-100" />
                 
                 {/* Icon */}
-                <div className="mb-3 text-3xl" role="img" aria-hidden="true">
-                  {h.icon}
+                <div className="mb-3">
+                  <HighlightIcon name={h.icon} />
                 </div>
                 
                 {/* Value */}
