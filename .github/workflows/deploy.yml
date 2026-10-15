@@ -98,11 +98,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # -f overrides the .gitignore entries for dist/ and assets/.
-          # We want the build output committed so GitHub Pages (which
-          # serves from the main branch) can pick it up without any UI
-          # toggle.
-          git add -f index.html assets dist
+          # -A includes the flattened public/* files (og-banner.jpg,
+          # sw.js, manifest.json, sitemap.xml, robots.txt, etc.) that
+          # were copied to the repo root in the previous step. -f lets
+          # us add the gitignored dist/ and assets/ build output.
+          git add -fA
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
