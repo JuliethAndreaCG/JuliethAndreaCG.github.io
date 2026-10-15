@@ -2,6 +2,7 @@
   "nav": {
     "about": "About",
     "skills": "Skills",
+    "approach": "Approach",
     "experience": "Experience",
     "resources": "Resources",
     "contact": "Contact",
@@ -11,7 +12,7 @@
     "greeting": "Hi, I'm",
     "name": "Julieth Andrea Caicedo",
     "headline": "Psychologist | Talent Acquisition Analyst",
-    "tagline": "Cali, Colombia · Clinical and organizational focus",
+    "tagline": "Cali, Colombia · In-person and remote care",
     "ctaPrimary": "Learn more",
     "ctaSecondary": "Contact"
   },
@@ -19,6 +20,7 @@
     "title": "About me",
     "lead": "Psychologist with clinical training and experience in human talent management.",
     "body": "Over 3 years of experience in individual psychological care, diagnostic assessment using ICD-10 criteria, and mass recruitment processes for national engineering projects. I combine clinical intervention skills (CBT, crisis intervention) with human resources competencies.",
+    "population": "I work with adults and adolescents seeking to improve their emotional well-being, manage stress, and develop tools to face difficulties.",
     "ai": "My clinical psychology training allows me to conduct rigorous assessments and accurate diagnoses, while my experience in talent management helps me understand organizational needs and contribute to team well-being.",
     "photoAlt": "Portrait of Julieth Andrea Caicedo",
     "highlights": {
@@ -31,6 +33,68 @@
       "patients": "30+",
       "patientsLabel": "weekly patients (clinical practice)"
     }
+  },
+  "approach": {
+    "title": "Work approach",
+    "subtitle": "How I support your process",
+    "description": "My work is based on an integrative approach that combines rigorous assessment with warm and respectful support. I use evidence-based tools to help you achieve your goals.",
+    "modalities": {
+      "title": "Care modalities",
+      "individual": "Individual therapy",
+      "individualDesc": "Personalized sessions to address your specific needs",
+      "assessment": "Psychological assessment",
+      "assessmentDesc": "Diagnostic evaluation with ICD-10 criteria",
+      "coaching": "Organizational support",
+      "coachingDesc": "Support in recruitment and workplace well-being"
+    },
+    "topics": {
+      "title": "Areas of care",
+      "anxiety": {
+        "name": "Anxiety and stress",
+        "description": "Management of anxiety symptoms, work stress, and emotional regulation techniques"
+      },
+      "mood": {
+        "name": "Mood disorders",
+        "description": "Evaluation and support in depressive processes and emotional difficulties"
+      },
+      "evaluation": {
+        "name": "Assessment and diagnosis",
+        "description": "Comprehensive psychological assessments with clinical approach"
+      },
+      "community": {
+        "name": "Community health",
+        "description": "Psychosocial intervention and family characterizations"
+      },
+      "talent": {
+        "name": "Talent management",
+        "description": "Staff selection, psychotechnical tests, and organizational well-being"
+      },
+      "crisis": {
+        "name": "Crisis intervention",
+        "description": "Care in crisis situations with stabilization tools"
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "question": "What is the first session like?",
+        "answer": "The first session is an initial interview where we learn about your situation, define objectives, and establish a work plan. It's a safe space for you to share what you need."
+      },
+      {
+        "question": "Do you offer online or in-person sessions?",
+        "answer": "I offer both modalities. Online therapy is equally effective and allows you to access it from anywhere."
+      },
+      {
+        "question": "How long does each session last?",
+        "answer": "Sessions last approximately 50 minutes, although it may vary according to the needs of the process."
+      },
+      {
+        "question": "How can I schedule an appointment?",
+        "answer": "You can contact me via WhatsApp or email. I will respond within 24 hours to coordinate the appointment."
+      }
+    ]
   },
   "skills": {
     "title": "Areas of expertise",
@@ -57,7 +121,7 @@
     "subtitle": "Unified trajectory with clinical and organizational focus",
     "hospitalRosario": {
       "title": "Clinical Psychologist",
-      "period": "Feb 2025 – Present",
+      "period": "Feb 2025 – Jun 2026",
       "sector": "Public Health",
       "location": "Cali, Colombia",
       "highlights": [
@@ -97,16 +161,53 @@
   },
   "projects": {
     "title": "Resources",
-    "subtitle": "Articles, publications and community projects",
+    "subtitle": "Videos and materials about psychology",
     "viewRepo": "View more",
     "viewLive": "View resource",
     "empty": "Coming soon: articles and resources on clinical and organizational psychology.",
     "items": {}
   },
+  "videos": {
+    "desconectar": {
+      "title": "Disconnect to rest",
+      "description": "It's hard to turn off the mind when we feel we must be on alert. The excess of information and news affects our mental health. It's important to release tension before going to sleep and take care of our emotional well-being."
+    },
+    "regulacionEmocional": {
+      "title": "Emotional regulation",
+      "description": "Emotional regulation is the ability to adequately manage emotions that can sometimes overwhelm us. It involves developing strategies to maintain healthy emotional balance and build positive interpersonal relationships."
+    },
+    "terapia": {
+      "title": "Going to therapy transforms lives",
+      "description": "Therapy helps you understand yourself better, manage your emotions, and grow in personal well-being."
+    },
+    "heridasInfancia": {
+      "title": "Childhood wounds",
+      "description": "Childhood experiences such as abandonment or rejection can leave deep scars that affect our relationships and how we see ourselves. Healing is possible and is the first step toward emotional freedom."
+    }
+  },
   "contact": {
     "title": "Contact",
     "subtitle": "Available for psychological care, organizational consulting and recruitment processes.",
-    "cta": "Reach out"
+    "cta": "Reach out",
+    "responseTime": "I respond within 24 hours",
+    "privacyNote": "Your information is treated with confidentiality",
+    "schedule": "Office hours",
+    "scheduleHours": {
+      "weekdays": "Monday to Friday",
+      "weekend": "Saturdays"
+    },
+    "closed": "Sundays and holidays",
+    "formTitle": "Send me a message",
+    "formName": "Name",
+    "formEmail": "Email",
+    "formPhone": "Phone (optional)",
+    "formMessage": "Message",
+    "formMessagePlaceholder": "Tell me how I can help you...",
+    "formRememberMe": "Remember me for future inquiries",
+    "formSubmit": "Send message",
+    "formSending": "Sending...",
+    "formSuccess": "Message sent! I'll contact you soon.",
+    "formError": "Error sending. Try again or contact me via WhatsApp."
   },
   "footer": {
     "builtWith": "Clinical and Organizational Psychology",
@@ -125,5 +226,10 @@
     "linkedin": "LinkedIn",
     "email": "Email",
     "phone": "WhatsApp"
+  },
+  "buttons": {
+    "contactWhatsApp": "Contact via WhatsApp",
+    "watchOnFacebook": "Watch on Facebook",
+    "watchFullVideo": "Watch full video on Facebook"
   }
 }

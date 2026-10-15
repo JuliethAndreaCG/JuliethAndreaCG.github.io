@@ -190,7 +190,24 @@
     "subtitle": "Disponible para atención psicológica, consultoría organizacional y procesos de selección.",
     "cta": "Escribir",
     "responseTime": "Te respondo en menos de 24 horas",
-    "privacyNote": "Tu información es tratada con confidencialidad"
+    "privacyNote": "Tu información es tratada con confidencialidad",
+    "schedule": "Horario de atención",
+    "scheduleHours": {
+      "weekdays": "Lunes a Viernes",
+      "weekend": "Sábados"
+    },
+    "closed": "Domingos y festivos",
+    "formTitle": "Envíame un mensaje",
+    "formName": "Nombre",
+    "formEmail": "Correo electrónico",
+    "formPhone": "Teléfono (opcional)",
+    "formMessage": "Mensaje",
+    "formMessagePlaceholder": "Cuéntame cómo puedo ayudarte...",
+    "formRememberMe": "Recordarme para futuras consultas",
+    "formSubmit": "Enviar mensaje",
+    "formSending": "Enviando...",
+    "formSuccess": "¡Mensaje enviado! Te contactaré pronto.",
+    "formError": "Error al enviar. Intenta de nuevo o contáctame por WhatsApp."
   },
   "footer": {
     "builtWith": "Psicología Clínica y Organizacional",
@@ -209,5 +226,10 @@
     "linkedin": "LinkedIn",
     "email": "Email",
     "phone": "WhatsApp"
+  },
+  "buttons": {
+    "contactWhatsApp": "Contactar por WhatsApp",
+    "watchOnFacebook": "Ver en Facebook",
+    "watchFullVideo": "Ver video completo en Facebook"
   }
 }
