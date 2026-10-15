@@ -1,10 +1,13 @@
 /**
  * Profile data — Julieth Andrea Caicedo Goyeneche
  * Página de Psicología | Psicóloga Clínica y Organizacional
+ *
+ * `fullName` es el H1 visible de la landing (Hero) e incluye las
+ * keywords principales (psicóloga + Valle del Cauca) para SEO local.
  */
 export const profile = {
-  name: 'Julieth C. Goyeneche',
-  fullName: 'Psicóloga Julieth C. Goyeneche',
+  name: 'Julieth Andrea Caicedo',
+  fullName: 'Psicóloga Julieth Andrea Caicedo',
   initials: 'JCG',
   location: {
     city: 'Ginebra',

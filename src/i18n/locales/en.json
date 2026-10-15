@@ -32,7 +32,12 @@
       "candidatesLabel": "candidates selected",
       "patients": "30+",
       "patientsLabel": "weekly patients (clinical practice)"
-    }
+    },
+    "referencesTitle": "Regulatory framework and sources",
+    "referencesBody": "My practice is grounded in Colombian regulatory frameworks and international scientific evidence:",
+    "refMinsalud": "Minsalud — Guidelines for Psychosocial Care in Mental Health (Colombia)",
+    "refOMS": "WHO — Mental disorders: facts and figures (2024 update)",
+    "refAPA": "APA — Diagnostic and Statistical Manual (DSM-5-TR) and Cognitive-Behavioral Therapy guidelines"
   },
   "approach": {
     "title": "Work approach",
@@ -215,8 +220,11 @@
   },
   "footer": {
     "builtWith": "Clinical and Organizational Psychology",
-    "deployedOn": "Cali, Colombia",
-    "copyright": "© {{year}} Julieth Andrea Caicedo. All rights reserved."
+    "deployedOn": "Ginebra, Valle del Cauca · Colombia",
+    "copyright": "© {{year}} Julieth Andrea Caicedo. All rights reserved.",
+    "disclaimer": "The information on this site is educational and does not replace in-person professional care. If you are in crisis, contact Línea 106 (Minsalud Colombia) or emergency services.",
+    "privacy": "Privacy policy",
+    "ethics": "Ethics and confidentiality"
   },
   "languageSwitcher": {
     "label": "Language",

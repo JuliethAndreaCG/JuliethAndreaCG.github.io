@@ -138,6 +138,54 @@ export function About(): JSX.Element {
               <div className="h-px w-12 bg-gradient-to-l from-transparent to-slate-300" />
             </div>
           </div>
+
+          {/* Marco regulatorio y fuentes (R02 — citation density) */}
+          <aside
+            aria-labelledby="about-references-heading"
+            className="mt-10 rounded-lg border border-purple-100 bg-purple-50/40 p-5"
+          >
+            <h3
+              id="about-references-heading"
+              className="mb-2 text-sm font-semibold uppercase tracking-wide text-purple-700"
+            >
+              {t('about.referencesTitle')}
+            </h3>
+            <p className="mb-3 text-sm text-slate-600">
+              {t('about.referencesBody')}
+            </p>
+            <ul className="space-y-1 text-sm">
+              <li>
+                <a
+                  className="text-purple-700 underline decoration-purple-300 underline-offset-2 hover:text-purple-900"
+                  href="https://www.minsalud.gov.co/salud/publica/SMental/Paginas/Lineamientos.aspx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('about.refMinsalud')}
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-purple-700 underline decoration-purple-300 underline-offset-2 hover:text-purple-900"
+                  href="https://www.who.int/es/news-room/fact-sheets/detail/mental-disorders"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('about.refOMS')}
+                </a>
+              </li>
+              <li>
+                <a
+                  className="text-purple-700 underline decoration-purple-300 underline-offset-2 hover:text-purple-900"
+                  href="https://www.apa.org/topics/cognitive-behavioral-therapy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('about.refAPA')}
+                </a>
+              </li>
+            </ul>
+          </aside>
         </div>
       </Container>
     </section>

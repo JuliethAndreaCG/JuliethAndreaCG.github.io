@@ -32,7 +32,12 @@
       "candidatesLabel": "candidatos seleccionados",
       "patients": "30+",
       "patientsLabel": "pacientes semanales (práctica)"
-    }
+    },
+    "referencesTitle": "Marco regulatorio y fuentes",
+    "referencesBody": "Mi práctica se fundamenta en el marco normativo colombiano y en evidencia científica internacional:",
+    "refMinsalud": "Minsalud — Lineamientos para la Atención Psicosocial en Salud Mental (Colombia)",
+    "refOMS": "OMS — Trastornos mentales: datos y cifras (actualización 2024)",
+    "refAPA": "APA — Manual Diagnóstico y Estadístico (DSM-5-TR) y guías de Terapia Cognitivo-Conductual"
   },
   "approach": {
     "title": "Enfoque de trabajo",
@@ -215,8 +220,11 @@
   },
   "footer": {
     "builtWith": "Psicología Clínica y Organizacional",
-    "deployedOn": "Cali, Colombia",
-    "copyright": "© {{year}} Julieth Andrea Caicedo. Todos los derechos reservados."
+    "deployedOn": "Ginebra, Valle del Cauca · Colombia",
+    "copyright": "© {{year}} Julieth Andrea Caicedo. Todos los derechos reservados.",
+    "disclaimer": "La información de este sitio tiene carácter educativo y no sustituye la atención profesional presencial. Si estás en crisis, comunícate con la Línea 106 (Minsalud Colombia) o con servicios de urgencias.",
+    "privacy": "Política de privacidad",
+    "ethics": "Ética y confidencialidad"
   },
   "languageSwitcher": {
     "label": "Idioma",
