@@ -14,7 +14,7 @@ Sitio profesional bilingüe (ES/EN) de **Julieth Andrea Caicedo Goyeneche**, psi
 ## Estructura del proyecto
 
 ```
-JCaicedo.github.io/
+JuliethAndreaCG.github.io/
 ├── .github/workflows/deploy.yml    # CI/CD a GitHub Pages
 ├── public/
 │   ├── .nojekyll                   # No procesar con Jekyll
@@ -107,8 +107,6 @@ git push -u origin feat/mi-cambio
 ```
 
 El sitio se actualiza en [juliethandreacg.github.io](https://juliethandreacg.github.io) ~30 segundos después del merge.
-
-> **Nota:** Este repositorio se llama `JCaicedo.github.io` por motivos de organización, pero el sitio se publica bajo el dominio personal `juliethandreacg.github.io`. Mientras esa redirección esté activa, todos los `canonical`, JSON-LD y sitemap apuntan a ese dominio.
 
 ## Internacionalización
 
