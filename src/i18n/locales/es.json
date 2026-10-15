@@ -19,9 +19,9 @@
   "about": {
     "title": "Sobre mí",
     "lead": "Psicóloga con formación clínica y experiencia en selección de talento humano.",
-    "body": "Más de 3 años de experiencia en atención psicológica individual, evaluación diagnóstica con criterios CIE-10, y gestión de procesos de selección para proyectos de ingeniería a nivel nacional. Combino habilidades en intervención clínica (TCC, intervención en crisis) con competencias en recursos humanos.",
+    "body": "Soy psicóloga con formación clínica y experiencia en selección de personal. He participado en procesos de selección para proyectos de ingeniería en distintas regiones del país, aplicando pruebas psicotécnicas y entrevistas por competencias, y he trabajado en campo con familias y comunidades en proyectos de salud pública.",
     "population": "Atiendo a adultos y adolescentes que buscan mejorar su bienestar emocional, gestionar el estrés y desarrollar herramientas para enfrentar dificultades.",
-    "ai": "Mi formación en psicología clínica me permite realizar evaluaciones rigurosas y diagnósticos precisos, mientras que mi experiencia en gestión de talento me ayuda a comprender las necesidades organizacionales y contribuir al bienestar de los equipos de trabajo.",
+    "ai": "Mi práctica clínica, con atención individual y evaluación diagnóstica con criterios del CIE-11, me enseñó a escuchar con atención y a entender lo que hay detrás de cada persona. Esa misma mirada la llevo a los procesos de selección y al bienestar de los equipos de trabajo.",
     "photoAlt": "Retrato de Julieth Andrea Caicedo",
     "highlights": {
       "years": "3+ años",
@@ -48,7 +48,7 @@
       "individual": "Terapia individual",
       "individualDesc": "Sesiones personalizadas para abordar tus necesidades específicas",
       "assessment": "Evaluación psicológica",
-      "assessmentDesc": "Valoración diagnóstica con criterios CIE-10",
+      "assessmentDesc": "Valoración diagnóstica con criterios CIE-11",
       "coaching": "Acompañamiento organizacional",
       "coachingDesc": "Soporte en procesos de selección y bienestar laboral"
     },
@@ -131,11 +131,11 @@
       "location": "Cali, Colombia",
       "highlights": [
         "Atención en salud mental bajo la ruta de Salud Pública y Atención Primaria en Salud (APS)",
-        "Evaluaciones diagnósticas con criterios CIE-10 y enfoque Cognitivo-Conductual (TCC)",
+        "Evaluaciones diagnósticas con criterios CIE-11 y enfoque Cognitivo-Conductual (TCC)",
         "Intervención en crisis en zonas rurales y urbanas",
         "Caracterizaciones comunitarias con ecomapas y familiogramas para más de 200 familias"
       ],
-      "stack": "Salud Pública, APS, CIE-10, TCC, Ecomapas, Familiogramas"
+      "stack": "Salud Pública, APS, CIE-11, TCC, Ecomapas, Familiogramas"
     },
     "proing": {
       "title": "Psicóloga Organizacional | Analista de Selección",
@@ -158,10 +158,10 @@
       "highlights": [
         "Atención individualizada a pacientes de diversas edades con trastornos afectivos y de ansiedad",
         "Gestión de portafolio de más de 30 pacientes semanales con alta adherencia terapéutica",
-        "Evaluaciones diagnósticas rigurosas basadas en criterios CIE-10",
+        "Evaluaciones diagnósticas rigurosas basadas en criterios CIE-11",
         "Ciclos terapéuticos de hasta 10 sesiones con seguimiento de resultados"
       ],
-      "stack": "Atención clínica, CIE-10, TCC, Intervención en crisis"
+      "stack": "Atención clínica, CIE-11, TCC, Intervención en crisis"
     }
   },
   "projects": {

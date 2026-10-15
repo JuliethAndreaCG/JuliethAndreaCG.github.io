@@ -6,7 +6,7 @@ import type { Skill } from '../types/skill';
  */
 export const skills: readonly Skill[] = [
   // Evaluación y Diagnóstico
-  { id: 'cie10', name: 'CIE-10', category: 'evaluacion', level: 5, featured: true, icon: 'clipboard' },
+  { id: 'cie11', name: 'CIE-11', category: 'evaluacion', level: 5, featured: true, icon: 'clipboard' },
   { id: 'pruebas-psico', name: 'Pruebas Psicotécnicas', category: 'evaluacion', level: 5, featured: true, icon: 'document' },
   { id: 'entrevistas', name: 'Entrevistas Clínicas', category: 'evaluacion', level: 5 },
   { id: 'familiogramas', name: 'Familiogramas', category: 'evaluacion', level: 4 },

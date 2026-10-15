@@ -19,9 +19,9 @@
   "about": {
     "title": "About me",
     "lead": "Psychologist with clinical training and experience in human talent management.",
-    "body": "Over 3 years of experience in individual psychological care, diagnostic assessment using ICD-10 criteria, and mass recruitment processes for national engineering projects. I combine clinical intervention skills (CBT, crisis intervention) with human resources competencies.",
+    "body": "I am a psychologist with clinical training and experience in personnel selection. I have participated in selection processes for engineering projects in different regions of the country, applying psychotechnical tests and competency-based interviews, and I have worked in the field with families and communities in public health projects.",
     "population": "I work with adults and adolescents seeking to improve their emotional well-being, manage stress, and develop tools to face difficulties.",
-    "ai": "My clinical psychology training allows me to conduct rigorous assessments and accurate diagnoses, while my experience in talent management helps me understand organizational needs and contribute to team well-being.",
+    "ai": "My clinical practice, with individual care and diagnostic assessment using ICD-11 criteria, taught me to listen carefully and understand what lies behind each person. I bring that same perspective to selection processes and to the well-being of work teams.",
     "photoAlt": "Portrait of Julieth Andrea Caicedo",
     "highlights": {
       "years": "3+ years",
@@ -48,7 +48,7 @@
       "individual": "Individual therapy",
       "individualDesc": "Personalized sessions to address your specific needs",
       "assessment": "Psychological assessment",
-      "assessmentDesc": "Diagnostic evaluation with ICD-10 criteria",
+      "assessmentDesc": "Diagnostic evaluation with ICD-11 criteria",
       "coaching": "Organizational support",
       "coachingDesc": "Support in recruitment and workplace well-being"
     },
@@ -131,11 +131,11 @@
       "location": "Cali, Colombia",
       "highlights": [
         "Mental health care under Public Health and Primary Health Care (PHC) guidelines",
-        "Diagnostic assessments using ICD-10 criteria and Cognitive-Behavioral Therapy (CBT)",
+        "Diagnostic assessments using ICD-11 criteria and Cognitive-Behavioral Therapy (CBT)",
         "Crisis intervention in rural and urban areas",
         "Community characterization with ecomaps and genograms for 200+ families"
       ],
-      "stack": "Public Health, PHC, ICD-10, CBT, Ecomaps, Genograms, Family Assessment"
+      "stack": "Public Health, PHC, ICD-11, CBT, Ecomaps, Genograms, Family Assessment"
     },
     "proing": {
       "title": "Organizational Psychologist | Recruitment Analyst",
@@ -158,10 +158,10 @@
       "highlights": [
         "Individualized care for patients of various ages with affective and anxiety disorders",
         "Management of 30+ weekly patients with high therapeutic adherence",
-        "Rigorous diagnostic assessments based on ICD-10 criteria",
+        "Rigorous diagnostic assessments based on ICD-11 criteria",
         "Therapeutic cycles of up to 10 sessions with outcome monitoring"
       ],
-      "stack": "Clinical care, ICD-10, CBT, Crisis Intervention, Mental Health"
+      "stack": "Clinical care, ICD-11, CBT, Crisis Intervention, Mental Health"
     }
   },
   "projects": {
