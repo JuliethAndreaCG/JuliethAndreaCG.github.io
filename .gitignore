@@ -47,3 +47,7 @@ src/*.d.ts
 !src/vite-env.d.ts
 *.tsbuildinfo
 .opencode/
+
+# documentations
+docs/
+.sdd

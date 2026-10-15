@@ -2,65 +2,117 @@ import type { JSX } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Container } from '../components/Container';
 import { SectionHeading } from '../components/SectionHeading';
+import { Blob, FloatingCircles } from '../components/Decorations';
+import { profile } from '../data/profile';
 
 type Highlight = {
   valueKey: string;
   labelKey: string;
+  icon: string;
 };
 
-/**
- * Static highlight cards rendered below the bio paragraph. i18n keys live
- * under `about.highlights.*`; both locales (en.json / es.json) define them.
- *
- * PR 8a: replaced placeholders with four real impact metrics taken from
- * the user's `ME.md` — 4+ years, 40% delivery reduction, 30% defect
- * reduction, 90% E2E coverage in healthcare modules.
- */
 const HIGHLIGHTS: readonly Highlight[] = [
-  { valueKey: 'about.highlights.years', labelKey: 'about.highlights.yearsLabel' },
-  { valueKey: 'about.highlights.delivery', labelKey: 'about.highlights.deliveryLabel' },
-  { valueKey: 'about.highlights.defects', labelKey: 'about.highlights.defectsLabel' },
-  { valueKey: 'about.highlights.coverage', labelKey: 'about.highlights.coverageLabel' },
+  { valueKey: 'about.highlights.years', labelKey: 'about.highlights.yearsLabel', icon: '⏱️' },
+  { valueKey: 'about.highlights.families', labelKey: 'about.highlights.familiesLabel', icon: '👨‍👩‍👧‍👦' },
+  { valueKey: 'about.highlights.candidates', labelKey: 'about.highlights.candidatesLabel', icon: '🎯' },
+  { valueKey: 'about.highlights.patients', labelKey: 'about.highlights.patientsLabel', icon: '💚' },
 ];
 
-/**
- * About section — three prose blocks (lead summary via SectionHeading,
- * then full bio, then AI-enhanced workflow) followed by four highlight
- * tiles. The profile photo used to live here but was moved to the Hero
- * section in PR 13 so the avatar appears exactly once on the page,
- * above the fold, next to the name.
- */
 export function About(): JSX.Element {
   const { t } = useTranslation();
+  
+  // Get WhatsApp URL with custom message
+  const whatsappSocial = profile.socials.find((s) => s.id === 'phone');
+  const whatsappUrl = whatsappSocial?.url || 'https://wa.me/573114770585?text=Hola%20Julieth%2C%20te%20contacto%20desde%20tu%20sitio%20web.%20Me%20gustar%C3%ADa%20agendar%20una%20cita.';
+
   return (
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="bg-white px-4 py-20 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-purple-50/20 to-white px-4 py-20 sm:px-6 lg:px-8"
     >
+      {/* Decorative elements */}
+      <Blob className="left-0 top-0 h-72 w-72 -translate-x-1/2" color="purple" />
+      <Blob className="right-0 bottom-1/4 h-64 w-64 translate-x-1/2" color="indigo" />
+      <FloatingCircles />
+      
+      {/* Top decorative line */}
+      <div className="absolute left-0 top-16 h-1 w-full bg-gradient-to-r from-transparent via-purple-300 to-transparent opacity-30" />
+      
       <Container>
-        <SectionHeading titleKey="about.title" subtitleKey="about.lead" />
-        <p className="mb-4 text-base leading-relaxed text-slate-700 sm:text-lg">
-          {t('about.body')}
-        </p>
-        <p className="mb-12 text-base leading-relaxed text-slate-700 sm:text-lg">
-          {t('about.ai')}
-        </p>
-        <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {HIGHLIGHTS.map((h) => (
-            <div
-              key={h.valueKey}
-              className="rounded-lg border border-slate-200 bg-slate-50 p-6"
-            >
-              <dt className="text-sm font-medium uppercase tracking-wider text-slate-500">
-                {t(h.labelKey)}
-              </dt>
-              <dd className="mt-2 text-2xl font-semibold text-slate-900">
-                {t(h.valueKey)}
-              </dd>
+        <div className="relative">
+          <SectionHeading titleKey="about.title" subtitleKey="about.lead" />
+          
+          <div className="max-w-5xl">
+            <p className="mb-4 text-base leading-relaxed text-slate-700 sm:text-lg">
+              {t('about.body')}
+            </p>
+            <p className="mb-6 text-base leading-relaxed text-slate-700 sm:text-lg">
+              {t('about.population')}
+            </p>
+            <p className="mb-8 text-base leading-relaxed text-slate-700 sm:text-lg">
+              {t('about.ai')}
+            </p>
+            
+            {/* WhatsApp Button - Blanco con borde morado */}
+            <div className="mb-12">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-full border-2 border-purple-400 bg-white px-8 py-4 text-base font-semibold text-purple-600 shadow-md transition-all hover:border-purple-500 hover:bg-purple-50 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0"
+              >
+                <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                <span>Contactar por WhatsApp</span>
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
             </div>
-          ))}
-        </dl>
+          </div>
+          
+          {/* Highlight cards with enhanced styling */}
+          <dl className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {HIGHLIGHTS.map((h, index) => (
+              <div
+                key={h.valueKey}
+                className="group relative overflow-hidden rounded-xl border border-purple-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Decorative top accent */}
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-purple-400 via-purple-500 to-indigo-400 opacity-0 transition-opacity group-hover:opacity-100" />
+                
+                {/* Icon */}
+                <div className="mb-3 text-3xl" role="img" aria-hidden="true">
+                  {h.icon}
+                </div>
+                
+                {/* Value */}
+                <dd className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
+                  {t(h.valueKey)}
+                </dd>
+                
+                {/* Label */}
+                <dt className="mt-1 text-sm font-medium text-slate-500">
+                  {t(h.labelKey)}
+                </dt>
+              </div>
+            ))}
+          </dl>
+          
+          {/* Bottom decorative element */}
+          <div className="mt-16 flex justify-center">
+            <div className="flex items-center gap-2 text-slate-400">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-slate-300" />
+              <svg className="h-4 w-4 animate-float-slow" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-slate-300" />
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   );

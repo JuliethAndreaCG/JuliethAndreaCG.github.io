@@ -5,6 +5,7 @@ import type { Skill, SkillCategory, SkillIconName } from '../types/skill';
 import { Container } from '../components/Container';
 import { SectionHeading } from '../components/SectionHeading';
 import { SkillIcon } from '../components/SkillIcon';
+import { CornerDecoration } from '../components/Decorations';
 
 /**
  * Display order for skill categories. Matches the i18n key namespace
@@ -14,12 +15,12 @@ import { SkillIcon } from '../components/SkillIcon';
  * `ai`) and switched the grid to `lg:grid-cols-3` to balance six tiles.
  */
 const CATEGORY_ORDER: readonly SkillCategory[] = [
-  'languages',
-  'frameworks',
-  'databases',
-  'qa',
-  'cloud',
-  'ai',
+  'evaluacion',
+  'intervencion',
+  'talento',
+  'salud-publica',
+  'herramientas',
+  'blandas',
 ];
 
 /**
@@ -54,7 +55,7 @@ function CoreStackCard({
   return (
     <div
       title={tooltipText}
-      className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:border-blue-500 hover:shadow-md"
+      className="flex flex-col items-center justify-center rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-all hover:border-purple-500 hover:shadow-md"
     >
       <SkillIcon name={iconName} />
       <span className="mt-2 text-sm font-bold text-slate-800">{skill.name}</span>
@@ -145,13 +146,15 @@ export function Skills(): JSX.Element {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="bg-slate-50 px-4 py-20 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-gradient-to-b from-purple-50/50 to-slate-50 px-4 py-20 sm:px-6 lg:px-8"
     >
+      <CornerDecoration position="top-left" />
+      <CornerDecoration position="bottom-right" />
       <Container>
         <SectionHeading titleKey="skills.title" subtitleKey="skills.subtitle" />
 
         <div className="mb-10">
-          <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-blue-600">
+          <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-purple-600">
             {t('skills.coreStack')}
           </h3>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">

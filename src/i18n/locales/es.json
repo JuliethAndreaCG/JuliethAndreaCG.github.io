@@ -1,134 +1,213 @@
 {
   "nav": {
     "about": "Sobre mí",
-    "skills": "Stack",
+    "skills": "Habilidades",
     "experience": "Experiencia",
-    "projects": "Proyectos",
+    "approach": "Enfoque",
+    "resources": "Recursos",
     "contact": "Contacto",
     "skipToContent": "Saltar al contenido"
   },
   "hero": {
     "greeting": "Hola, soy",
-    "name": "Johan Ospitia",
-    "headline": "Desarrollador Full-Stack y Líder de QA Automation",
-    "tagline": "Cali, Colombia · Disponible para trabajo remoto",
-    "ctaPrimary": "Ver proyectos",
-    "ctaSecondary": "Contactar",
-    "cvDownload": "Descargar CV",
-    "cvView": "Ver CV"
+    "name": "Julieth Andrea Caicedo",
+    "headline": "Psicóloga | Analista de Selección y Contratación",
+    "tagline": "Cali, Colombia · Atención presencial y remota",
+    "ctaPrimary": "Conocer más",
+    "ctaSecondary": "Contactar"
   },
   "about": {
     "title": "Sobre mí",
-    "lead": "Ingeniero Informático con más de 4 años de experiencia como Desarrollador Full-Stack, con dominio de Java, Spring Boot, Node.js, PHP, React y Angular.",
-    "body": "He participado activamente en el ciclo completo del software: desde el levantamiento de requerimientos y la generación de historias de usuario hasta la definición de la arquitectura inicial, el desarrollo Full-Stack e implementación en producción. Adicionalmente, he liderado estrategias de calidad garantizando la estabilidad de sistemas mediante automatización avanzada con Playwright y Cypress.",
-    "ai": "Potencio cada etapa del ciclo de desarrollo con Inteligencia Artificial de forma concreta y medible: utilizo orquestadores como Gentle-AI, Kimi K2 y DeepSeek para planificar proyectos por fases y estructurar requerimientos técnicos; Open Code + MiniMax para validar historias de usuario contra el código implementado, reduciendo defectos antes de la salida a producción; y modelos como Gemini y Claude (vía Antigravity) para acelerar la escritura de código y la generación automatizada de suites de pruebas E2E con Playwright dentro de pipelines CI/CD bajo metodología Scrum. Actualmente complemento mi perfil cursando un Máster Universitario en Dirección y Gestión de TI en la UNIR (España).",
-    "photoAlt": "Retrato de Johan Ospitia",
+    "lead": "Psicóloga con formación clínica y experiencia en selección de talento humano.",
+    "body": "Más de 3 años de experiencia en atención psicológica individual, evaluación diagnóstica con criterios CIE-10, y gestión de procesos de selección para proyectos de ingeniería a nivel nacional. Combino habilidades en intervención clínica (TCC, intervención en crisis) con competencias en recursos humanos.",
+    "population": "Atiendo a adultos y adolescentes que buscan mejorar su bienestar emocional, gestionar el estrés y desarrollar herramientas para enfrentar dificultades.",
+    "ai": "Mi formación en psicología clínica me permite realizar evaluaciones rigurosas y diagnósticos precisos, mientras que mi experiencia en gestión de talento me ayuda a comprender las necesidades organizacionales y contribuir al bienestar de los equipos de trabajo.",
+    "photoAlt": "Retrato de Julieth Andrea Caicedo",
     "highlights": {
-      "years": "4+ años",
-      "yearsLabel": "cubriendo el ciclo completo de software",
-      "delivery": "40% de reducción",
-      "deliveryLabel": "en tiempos de entrega mediante orquestación de IA",
-      "defects": "30% de reducción",
-      "defectsLabel": "de defectos en producción con validación IA + automatización",
-      "coverage": "90% de cobertura",
-      "coverageLabel": "automatizada E2E en módulos de salud"
+      "years": "3+ años",
+      "yearsLabel": "de experiencia profesional",
+      "families": "200+",
+      "familiesLabel": "familias atendidas en APS",
+      "candidates": "200+",
+      "candidatesLabel": "candidatos seleccionados",
+      "patients": "30+",
+      "patientsLabel": "pacientes semanales (práctica)"
     }
   },
+  "approach": {
+    "title": "Enfoque de trabajo",
+    "subtitle": "Cómo acompaño tu proceso",
+    "description": "Mi trabajo se fundamenta en un enfoque integrador que combina la evaluación rigurosa con un acompañamiento cálido y respetuoso. Utilizo herramientas basadas en evidencia para ayudarte a alcanzar tus objetivos.",
+    "modalities": {
+      "title": "Modalidades de atención",
+      "individual": "Terapia individual",
+      "individualDesc": "Sesiones personalizadas para abordar tus necesidades específicas",
+      "assessment": "Evaluación psicológica",
+      "assessmentDesc": "Valoración diagnóstica con criterios CIE-10",
+      "coaching": "Acompañamiento organizacional",
+      "coachingDesc": "Soporte en procesos de selección y bienestar laboral"
+    },
+    "topics": {
+      "title": "Áreas de atención",
+      "anxiety": {
+        "name": "Ansiedad y estrés",
+        "description": "Manejo de síntomas de ansiedad, estrés laboral y técnicas de regulación emocional"
+      },
+      "mood": {
+        "name": "Trastornos del ánimo",
+        "description": "Evaluación y acompañamiento en procesos depresivos y dificultades emocionales"
+      },
+      "evaluation": {
+        "name": "Evaluación y diagnóstico",
+        "description": "Valoraciones psicológicas completas con enfoque clínico"
+      },
+      "community": {
+        "name": "Salud comunitaria",
+        "description": "Intervención psicosocial y caracterizaciones familiares"
+      },
+      "talent": {
+        "name": "Gestión de talento",
+        "description": "Selección de personal, pruebas psicotécnicas y bienestar organizacional"
+      },
+      "crisis": {
+        "name": "Intervención en crisis",
+        "description": "Atención en situaciones de crisis con herramientas de estabilización"
+      }
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "question": "¿Cómo es la primera sesión?",
+        "answer": "La primera sesión es una entrevista inicial donde conocemos tu situación, definimos objetivos y establecemos un plan de trabajo. Es un espacio seguro para que compartas lo que necesitas."
+      },
+      {
+        "question": "¿Atiendes online o presencial?",
+        "answer": "Ofrezco ambas modalidades. La terapia online es igualmente efectiva y te permite acceder desde donde estés."
+      },
+      {
+        "question": "¿Cuánto dura cada sesión?",
+        "answer": "Las sesiones tienen una duración aproximada de 50 minutos, aunque puede variar según la necesidad del proceso."
+      },
+      {
+        "question": "¿Cómo puedo agendar una cita?",
+        "answer": "Puedes contactarme por WhatsApp o email. Te responderé en menos de 24 horas para coordinar la cita."
+      }
+    ]
+  },
   "skills": {
-    "title": "Stack tecnológico",
-    "subtitle": "Lenguajes, frameworks, bases de datos, QA, cloud y herramientas de IA que utilizo",
-    "coreStack": "Stack principal",
-    "secondaryStack": "Otras tecnologías",
+    "title": "Áreas de competencia",
+    "subtitle": "Herramientas y conocimientos que aplico en mi trabajo",
+    "coreStack": "Competencias principales",
+    "secondaryStack": "Otras habilidades",
     "categories": {
-      "languages": "Lenguajes",
-      "frameworks": "Frameworks",
-      "databases": "Bases de datos",
-      "qa": "QA y Testing",
-      "cloud": "Cloud y DevOps",
-      "ai": "IA y Orquestadores"
+      "evaluacion": "Evaluación y Diagnóstico",
+      "intervencion": "Intervención Terapéutica",
+      "talento": "Gestión de Talento",
+      "salud-publica": "Salud Pública",
+      "herramientas": "Herramientas",
+      "blandas": "Habilidades Profesionales"
     },
     "levels": {
-      "expert": "Nivel experto · Dominio total, uso diario, liderazgo técnico",
-      "advanced": "Nivel avanzado · Fluidez y autonomía sólida",
-      "intermediate": "Nivel intermedio · Conocimiento práctico, integración ocasional",
+      "expert": "Nivel experto · Amplia experiencia y autonomía",
+      "advanced": "Nivel avanzado · Sólido conocimiento y práctica",
+      "intermediate": "Nivel intermedio · Conocimiento práctico",
       "beginner": "Nivel inicial"
     }
   },
   "experience": {
-    "title": "Experiencia laboral",
-    "subtitle": "Más de 4 años cubriendo el ciclo completo de software",
-    "blueData": {
-      "title": "QA Automation / Consultor",
-      "period": "Feb 2024 – Sep 2026",
-      "sector": "Sector Salud",
+    "title": "Experiencia profesional",
+    "subtitle": "Trayectoria unificada con enfoque clínico y organizacional",
+    "hospitalRosario": {
+      "title": "Psicóloga Clínica",
+      "period": "Feb 2025 – Jun 2026",
+      "sector": "Salud Pública",
       "location": "Cali, Colombia",
       "highlights": [
-        "Lideré la estrategia de calidad bajo metodología Scrum, diseñando y ejecutando pruebas funcionales, de humo (smoke tests) y de regresión para garantizar la estabilidad de módulos críticos de salud (admisiones, facturación y dispensación).",
-        "Diseñé e implementé marcos de automatización E2E y de APIs REST (Cypress, Playwright, Postman) para los flujos críticos, reduciendo los tiempos de validación manual de regresión en un 50%.",
-        "Integré herramientas de IA (Copilot, Gemini) en los pipelines de QA para la generación ágil de casos de prueba, logrando una reducción del 30% de defectos en producción.",
-        "Realicé validaciones de contratos API y consultas en bases de datos relacionales (SQL), complementando el ciclo de pruebas manuales y garantizando la integridad de los datos médicos."
+        "Atención en salud mental bajo la ruta de Salud Pública y Atención Primaria en Salud (APS)",
+        "Evaluaciones diagnósticas con criterios CIE-10 y enfoque Cognitivo-Conductual (TCC)",
+        "Intervención en crisis en zonas rurales y urbanas",
+        "Caracterizaciones comunitarias con ecomapas y familiogramas para más de 200 familias"
       ],
-      "stack": "Stack QA: Pruebas Funcionales/Manuales, Cypress, Playwright, Postman, SQL, Scrum, CI/CD, IA Testing."
+      "stack": "Salud Pública, APS, CIE-10, TCC, Ecomapas, Familiogramas"
     },
     "proing": {
-      "title": "Analista y Desarrollador de TIC",
-      "period": "Feb 2022 – Nov 2023",
-      "sector": "Ingeniería y Servicios",
+      "title": "Psicóloga Organizacional | Analista de Selección",
+      "period": "Ene 2023 – Abr 2024",
+      "sector": "Gestión de Talento",
       "location": "Cali, Colombia",
       "highlights": [
-        "Desarrollé y mantuve aplicaciones web y servicios RESTful en Java (Spring Boot), PHP y arquitecturas de microservicios, así como aplicaciones móviles nativas (Android/Java).",
-        "Gestioné y optimicé bases de datos en Oracle, PostgreSQL y MySQL, mejorando el rendimiento de consultas SQL complejas.",
-        "Diseñé y ejecuté pruebas unitarias, de integración y de validación de contratos para APIs REST.",
-        "Brindé apoyo transversal participando activamente en los procesos de selección, evaluación técnica y reclutamiento de personal del área TI.",
-        "Participé en todo el SDLC: levantamiento de requerimientos, historias de usuario, desarrollo e integración de infraestructura bajo Scrum."
+        "Selección y vinculación de más de 200 candidatos a nivel nacional para proyectos de ingeniería",
+        "Aplicación e interpretación de pruebas psicotécnicas (Wartegg, Valanti, Figura Humana)",
+        "Entrevistas por competencias y método STAR para ágil cobertura de vacantes",
+        "Diseño de capacitaciones en prevención de riesgo psicosocial y bienestar organizacional"
       ],
-      "stack": "Stack: Spring Boot (Java), Android (Java), Angular, PHP, MySQL, PostgreSQL, Oracle, Git."
+      "stack": "Reclutamiento, Pruebas psicotécnicas, Entrevistas STAR, Excel, Power BI"
+    },
+    "capUpb": {
+      "title": "Practicante de Psicología Clínica",
+      "period": "Ago 2022 – Dic 2022",
+      "sector": "Atención Clínica",
+      "location": "Palmira, Colombia",
+      "highlights": [
+        "Atención individualizada a pacientes de diversas edades con trastornos afectivos y de ansiedad",
+        "Gestión de portafolio de más de 30 pacientes semanales con alta adherencia terapéutica",
+        "Evaluaciones diagnósticas rigurosas basadas en criterios CIE-10",
+        "Ciclos terapéuticos de hasta 10 sesiones con seguimiento de resultados"
+      ],
+      "stack": "Atención clínica, CIE-10, TCC, Intervención en crisis"
     }
   },
   "projects": {
-    "title": "Proyectos destacados",
-    "subtitle": "Trabajo seleccionado — mirá más en GitHub",
-    "viewRepo": "Ver repositorio",
-    "viewLive": "Ver en vivo",
-    "items": {
-      "resumeTailor": {
-        "title": "Resume Tailor AI v2.5",
-        "description": "Plataforma AI Full-Stack para auditar y adaptar CVs a ofertas laborales mediante orquestación en cadena de LLMs y análisis ATS. Generación rápida de PDF vectorial con Typst y procesamiento en tiempo real (SSE)."
-      },
-      "hrTech": {
-        "title": "HR-Tech SaaS Platform",
-        "description": "Plataforma SaaS Multi-Tenant empresarial para gestión integral de RRHH y nómina. Incluye aislamiento lógico de datos por empresa (RBAC/JWT) a nivel SQL y almacenamiento seguro en la nube."
-      },
-      "fixlat": {
-        "title": "Tablero de Notas y Métricas Serverless",
-        "description": "Aplicación web Full-Stack para gestión de tareas drag-and-drop con arquitectura serverless desacoplada para optimizar costos de infraestructura procesando métricas en segundo plano."
-      },
-      "inventarios": {
-        "title": "Gestión de Inventarios y Monitoreo IoT",
-        "description": "Sistema de gestión de inventarios y trazabilidad de lotes. Incluye control de bodegas, reportes y monitoreo ambiental en tiempo real integrado con sensores IoT."
-      }
+    "title": "Recursos",
+    "subtitle": "Videos y materiales sobre psicología",
+    "viewRepo": "Ver más",
+    "viewLive": "Ver recurso",
+    "empty": "Próximamente artículos y recursos sobre psicología clínica y organizacional.",
+    "items": {}
+  },
+  "videos": {
+    "desconectar": {
+      "title": "Desconectar para descansar",
+      "description": "Es difícil apagar la mente cuando sentimos que debemos estar en alerta. El exceso de información y las noticias afectan nuestra salud mental. Es importante soltar la tensión antes de ir a dormir y cuidar nuestro bienestar emocional."
+    },
+    "regulacionEmocional": {
+      "title": "Regulación emocional",
+      "description": "La regulación emocional es la capacidad de gestionar adecuadamente las emociones que a veces pueden desbordarnos. Implica desarrollar estrategias para mantener un equilibrio emocional saludable y construir relaciones interpersonales positivas."
+    },
+    "terapia": {
+      "title": "Ir a terapia transforma vidas",
+      "description": "La terapia ayuda a comprenderte mejor, a gestionar tus emociones y a crecer en bienestar personal."
+    },
+    "heridasInfancia": {
+      "title": "Heridas de infancia",
+      "description": "Las experiencias de la infancia como el abandono o el rechazo pueden dejar cicatrices profundas que afectan nuestras relaciones y la forma en que nos vemos. Sanar es posible y es el primer paso hacia la libertad emocional."
     }
   },
   "contact": {
     "title": "Contacto",
-    "subtitle": "Abierto a proyectos, propuestas profesionales y colaboraciones técnicas.",
-    "cta": "Escribir"
+    "subtitle": "Disponible para atención psicológica, consultoría organizacional y procesos de selección.",
+    "cta": "Escribir",
+    "responseTime": "Te respondo en menos de 24 horas",
+    "privacyNote": "Tu información es tratada con confidencialidad"
   },
   "footer": {
-    "builtWith": "Construido con React, TypeScript y Tailwind",
-    "deployedOn": "Desplegado en GitHub Pages",
-    "copyright": "© {{year}} Johan Ospitia. Todos los derechos reservados."
+    "builtWith": "Psicología Clínica y Organizacional",
+    "deployedOn": "Cali, Colombia",
+    "copyright": "© {{year}} Julieth Andrea Caicedo. Todos los derechos reservados."
   },
   "languageSwitcher": {
     "label": "Idioma",
     "es": "Español",
-    "en": "Inglés",
-    "github": "GitHub"
+    "en": "English",
+    "github": "LinkedIn"
   },
   "socials": {
-    "github": "GitHub",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
     "linkedin": "LinkedIn",
-    "whatsapp": "WhatsApp",
-    "email": "Email"
+    "email": "Email",
+    "phone": "WhatsApp"
   }
 }

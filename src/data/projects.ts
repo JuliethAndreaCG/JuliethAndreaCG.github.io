@@ -1,46 +1,56 @@
-import type { Project } from '../types/project';
-
 /**
- * Featured projects data source. Consumed by the Projects section
- * (PR 3a). `titleKey` and `descriptionKey` reference entries under
- * `projects.items.<id>` in src/i18n/locales/{en,es}.json — both
- * locales must define every referenced key, otherwise `tsc --noEmit`
- * does not fail but the runtime `t()` call returns the raw key.
- *
- * PR 8a replaces the placeholder trios (weather/task-api/notes) with
- * the four real repos from the user's `ME.md`:
- * - resume-tailor-ai (jd-to-resume-v2) — AI CV tailor, FastAPI + React 19
- * - hr-tech-saas (AppMiAplicacion)      — Multi-Tenant HR & payroll
- * - fixlat-tablero-notas                — Serverless drag-and-drop dashboard
- * - inventarios-iot (prueba-tecnica-johan-ospitia) — Inventory & IoT
+ * Projects/Resources data — Julieth Andrea Caicedo
+ * Incluye videos de Facebook y otros recursos
  */
-export const projects: readonly Project[] = [
+export type VideoItem = {
+  id: string;
+  titleKey: string;
+  descriptionKey: string;
+  facebookUrl: string;
+  thumbnailUrl: string;
+};
+
+// Videos de Facebook de Julieth
+export const videos: readonly VideoItem[] = [
   {
-    id: 'resume-tailor-ai',
-    titleKey: 'projects.items.resumeTailor.title',
-    descriptionKey: 'projects.items.resumeTailor.description',
-    tech: ['FastAPI', 'React 19', 'Playwright', 'Gemini', 'Typst', 'SSE'],
-    repoUrl: 'https://github.com/JOspitia/jd-to-resume-v2',
+    id: 'video-1',
+    titleKey: 'videos.desconectar.title',
+    descriptionKey: 'videos.desconectar.description',
+    facebookUrl: 'https://www.facebook.com/share/v/1c9nTxyss7/',
+    thumbnailUrl: '/videos.png',
   },
   {
-    id: 'hr-tech-saas',
-    titleKey: 'projects.items.hrTech.title',
-    descriptionKey: 'projects.items.hrTech.description',
-    tech: ['Spring Boot', 'Angular', 'Java', 'PostgreSQL', 'MinIO', 'Docker'],
-    repoUrl: 'https://github.com/JOspitia/AppMiAplicacion',
+    id: 'video-2',
+    titleKey: 'videos.regulacionEmocional.title',
+    descriptionKey: 'videos.regulacionEmocional.description',
+    facebookUrl: 'https://www.facebook.com/share/v/1939iG8ZPL/',
+    thumbnailUrl: '/videos.png',
   },
   {
-    id: 'fixlat-tablero-notas',
-    titleKey: 'projects.items.fixlat.title',
-    descriptionKey: 'projects.items.fixlat.description',
-    tech: ['Laravel', 'React', 'AWS Lambda', 'Node.js', 'TypeScript', 'Docker'],
-    repoUrl: 'https://github.com/JOspitia/fixlat-tablero-notas',
+    id: 'video-3',
+    titleKey: 'videos.terapia.title',
+    descriptionKey: 'videos.terapia.description',
+    facebookUrl: 'https://www.facebook.com/share/v/1BuhoCM8rj/',
+    thumbnailUrl: '/videos.png',
   },
   {
-    id: 'inventarios-iot',
-    titleKey: 'projects.items.inventarios.title',
-    descriptionKey: 'projects.items.inventarios.description',
-    tech: ['Laravel', 'PHP', 'React 19', 'Ant Design', 'REST APIs'],
-    repoUrl: 'https://github.com/JOspitia/prueba-tecnica-johan-ospitia',
+    id: 'video-4',
+    titleKey: 'videos.heridasInfancia.title',
+    descriptionKey: 'videos.heridasInfancia.description',
+    facebookUrl: 'https://www.facebook.com/share/p/18muKFHwup/',
+    thumbnailUrl: '/terapia-ayuda.png',
   },
-] as const;
+  // Agregar más videos aquí:
+];
+
+export type ProjectItem = {
+  id: string;
+  titleKey: string;
+  descriptionKey: string;
+  repoUrl?: string;
+  liveUrl?: string;
+};
+
+export const projects: readonly ProjectItem[] = [
+  // TODO: Agregar recursos o artículos en el futuro
+];

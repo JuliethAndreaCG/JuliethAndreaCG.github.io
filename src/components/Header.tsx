@@ -11,14 +11,15 @@ import { profile } from '../data/profile';
  * `<Experience />` section. The closed tuple type keeps the i18n map
  * exhaustive at compile time.
  */
-const NAV_IDS = ['about', 'skills', 'experience', 'projects', 'contact'] as const;
+const NAV_IDS = ['about', 'skills', 'approach', 'experience', 'resources', 'contact'] as const;
 type NavId = (typeof NAV_IDS)[number];
 
 const NAV_KEYS: Record<NavId, string> = {
   about: 'nav.about',
   skills: 'nav.skills',
+  approach: 'nav.approach',
   experience: 'nav.experience',
-  projects: 'nav.projects',
+  resources: 'nav.resources',
   contact: 'nav.contact',
 };
 
@@ -63,8 +64,7 @@ export function Header(): JSX.Element {
             onClick={handleNavClick('hero')}
             className="text-sm font-semibold tracking-tight text-slate-900 hover:text-blue-600"
           >
-            {profile.initials}
-            <span className="sr-only"> — {t('nav.skipToContent')}</span>
+            {profile.name.split(' ')[0]}
           </a>
           <nav aria-label={t('nav.skipToContent')} className="hidden md:block">
             <ul className="flex items-center gap-1">
@@ -79,7 +79,7 @@ export function Header(): JSX.Element {
                       className={[
                         'rounded px-3 py-2 text-sm font-medium transition-colors',
                         isActive
-                          ? 'text-blue-600'
+                          ? 'text-purple-600'
                           : 'text-slate-600 hover:text-slate-900',
                       ].join(' ')}
                     >

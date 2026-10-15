@@ -1,17 +1,6 @@
 /**
- * Work experience data source — consumed by the Experience section
- * (PR 8a). Each item points to i18n keys for every translatable field
- * (title, period, sector, location, bullet highlights, stack line)
- * so the same record renders in English or Spanish without touching
- * the data layer.
- *
- * The bullets live under `experience.<id>.highlights.<index>` and the
- * stack summary under `experience.<id>.stack` — both `en.json` and
- * `es.json` must define them or `t()` returns the raw key.
- *
- * Two entries from the user's `ME.md`:
- * - blue-data-service: Feb 2024 – Sep 2026, Healthcare Sector.
- * - proing:            Feb 2022 – Nov 2023, Engineering & Services.
+ * Experience data — Julieth Andrea Caicedo
+ * Experiencias unificadas con enfoque clínico y organizacional
  */
 export type ExperienceItem = {
   id: string;
@@ -26,19 +15,19 @@ export type ExperienceItem = {
 
 export const experience: readonly ExperienceItem[] = [
   {
-    id: 'blue-data-service',
-    titleKey: 'experience.blueData.title',
-    company: 'Blue Data Service',
-    periodKey: 'experience.blueData.period',
-    sectorKey: 'experience.blueData.sector',
-    locationKey: 'experience.blueData.location',
+    id: 'hospital-rosario',
+    titleKey: 'experience.hospitalRosario.title',
+    company: 'Hospital del Rosario - Ministerio de Salud',
+    periodKey: 'experience.hospitalRosario.period',
+    sectorKey: 'experience.hospitalRosario.sector',
+    locationKey: 'experience.hospitalRosario.location',
     highlights: [
-      'experience.blueData.highlights.0',
-      'experience.blueData.highlights.1',
-      'experience.blueData.highlights.2',
-      'experience.blueData.highlights.3',
+      'experience.hospitalRosario.highlights.0',
+      'experience.hospitalRosario.highlights.1',
+      'experience.hospitalRosario.highlights.2',
+      'experience.hospitalRosario.highlights.3',
     ],
-    stackKey: 'experience.blueData.stack',
+    stackKey: 'experience.hospitalRosario.stack',
   },
   {
     id: 'proing',
@@ -52,8 +41,22 @@ export const experience: readonly ExperienceItem[] = [
       'experience.proing.highlights.1',
       'experience.proing.highlights.2',
       'experience.proing.highlights.3',
-      'experience.proing.highlights.4',
     ],
     stackKey: 'experience.proing.stack',
+  },
+  {
+    id: 'cap-upb',
+    titleKey: 'experience.capUpb.title',
+    company: 'Centro de Atención Psicológica - CAP UPB',
+    periodKey: 'experience.capUpb.period',
+    sectorKey: 'experience.capUpb.sector',
+    locationKey: 'experience.capUpb.location',
+    highlights: [
+      'experience.capUpb.highlights.0',
+      'experience.capUpb.highlights.1',
+      'experience.capUpb.highlights.2',
+      'experience.capUpb.highlights.3',
+    ],
+    stackKey: 'experience.capUpb.stack',
   },
 ] as const;

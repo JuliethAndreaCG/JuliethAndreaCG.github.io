@@ -1,67 +1,44 @@
 import type { Skill } from '../types/skill';
 
 /**
- * Skills data source — consumed by the Skills section (PR 3a).
- *
- * `name` is intentionally NOT translated (design #168 decision #4):
- * "TypeScript", "PostgreSQL", etc. are product names, not copy.
- * Category labels ARE translated via `t('skills.categories.<id>')`.
- *
- * `level` is a 1..5 ordinal surfaced as `L{level}` next to each badge.
- *
- * PR 8a replaces placeholders with the real stack from the user's
- * `ME.md`: 6 categories (languages, frameworks, databases, qa, cloud,
- * ai) with 32 skills. Levels reflect working confidence (1=exposure,
- * 5=expert).
- *
- * PR 8a update: marks six skills as `featured: true` so the Skills
- * section renders them with an inline SVG icon and larger typography
- * (Spring Boot, Node.js, React, Playwright, PostgreSQL, Docker). The
- * rest stay as standard small badges. Head hunters see fewer-but-
- * deeper skills rather than many shallow ones.
+ * Skills data — Julieth Andrea Caicedo
+ * Habilidades adaptadas para perfil de psicología clínica y organizacional
  */
 export const skills: readonly Skill[] = [
-  // Languages
-  { id: 'java', name: 'Java', category: 'languages', level: 5 },
-  { id: 'ts', name: 'TypeScript', category: 'languages', level: 5 },
-  { id: 'js', name: 'JavaScript', category: 'languages', level: 5 },
-  { id: 'php', name: 'PHP', category: 'languages', level: 4 },
-  { id: 'py', name: 'Python', category: 'languages', level: 3 },
+  // Evaluación y Diagnóstico
+  { id: 'cie10', name: 'CIE-10', category: 'evaluacion', level: 5, featured: true, icon: 'clipboard' },
+  { id: 'pruebas-psico', name: 'Pruebas Psicotécnicas', category: 'evaluacion', level: 5, featured: true, icon: 'document' },
+  { id: 'entrevistas', name: 'Entrevistas Clínicas', category: 'evaluacion', level: 5 },
+  { id: 'familiogramas', name: 'Familiogramas', category: 'evaluacion', level: 4 },
+  { id: 'ecomapas', name: 'Ecomapas', category: 'evaluacion', level: 4 },
 
-  // Frameworks (backend + frontend)
-  { id: 'spring', name: 'Spring Boot', category: 'frameworks', level: 5, featured: true, icon: 'spring' },
-  { id: 'node', name: 'Node.js', category: 'frameworks', level: 4, featured: true, icon: 'node' },
-  { id: 'express', name: 'Express', category: 'frameworks', level: 4 },
-  { id: 'fastapi', name: 'FastAPI', category: 'frameworks', level: 3 },
-  { id: 'laravel', name: 'Laravel', category: 'frameworks', level: 4 },
-  { id: 'react', name: 'React', category: 'frameworks', level: 5, featured: true, icon: 'react' },
-  { id: 'angular', name: 'Angular', category: 'frameworks', level: 4 },
-  { id: 'tailwind', name: 'Tailwind CSS', category: 'frameworks', level: 5 },
+  // Intervención Terapéutica
+  { id: 'tcc', name: 'TCC', category: 'intervencion', level: 5, featured: true, icon: 'brain' },
+  { id: 'intervencion-crisis', name: 'Intervención en Crisis', category: 'intervencion', level: 5, featured: true, icon: 'alert' },
+  { id: 'atencion-clinica', name: 'Atención Clínica', category: 'intervencion', level: 5 },
+  { id: 'salud-mental', name: 'Salud Mental', category: 'intervencion', level: 5 },
 
-  // Databases
-  { id: 'postgres', name: 'PostgreSQL', category: 'databases', level: 4, featured: true, icon: 'postgresql' },
-  { id: 'mysql', name: 'MySQL', category: 'databases', level: 4 },
-  { id: 'oracle', name: 'Oracle', category: 'databases', level: 3 },
-  { id: 'mssql', name: 'SQL Server', category: 'databases', level: 3 },
+  // Gestión de Talento
+  { id: 'seleccion', name: 'Selección de Personal', category: 'talento', level: 5, featured: true, icon: 'users' },
+  { id: 'onboarding', name: 'Onboarding', category: 'talento', level: 4 },
+  { id: 'riesgo-psicosocial', name: 'Riesgo Psicosocial', category: 'talento', level: 4 },
+  { id: 'clima-laboral', name: 'Clima Laboral', category: 'talento', level: 4 },
 
-  // QA & Testing
-  { id: 'playwright', name: 'Playwright', category: 'qa', level: 5, featured: true, icon: 'playwright' },
-  { id: 'cypress', name: 'Cypress', category: 'qa', level: 5 },
-  { id: 'selenium', name: 'Selenium', category: 'qa', level: 3 },
-  { id: 'postman', name: 'Postman', category: 'qa', level: 4 },
+  // Salud Pública
+  { id: 'aps', name: 'Atención Primaria (APS)', category: 'salud-publica', level: 5, featured: true, icon: 'heart' },
+  { id: 'caracterizaciones', name: 'Caracterizaciones', category: 'salud-publica', level: 5 },
+  { id: 'planes-cuidado', name: 'Planes de Cuidado', category: 'salud-publica', level: 4 },
+  { id: 'diagnosticos-sociales', name: 'Diagnósticos Psicosociales', category: 'salud-publica', level: 4 },
 
-  // Cloud & DevOps
-  { id: 'docker', name: 'Docker', category: 'cloud', level: 4, featured: true, icon: 'docker' },
-  { id: 'aws-s3', name: 'AWS S3', category: 'cloud', level: 3 },
-  { id: 'aws-lambda', name: 'AWS Lambda', category: 'cloud', level: 3 },
-  { id: 'ci-cd', name: 'CI/CD', category: 'cloud', level: 4 },
-  { id: 'git', name: 'Git', category: 'cloud', level: 5 },
+  // Herramientas
+  { id: 'excel', name: 'Excel', category: 'herramientas', level: 5 },
+  { id: 'powerbi', name: 'Power BI', category: 'herramientas', level: 4 },
+  { id: 'spss', name: 'SPSS', category: 'herramientas', level: 3 },
+  { id: 'kpis', name: 'KPIs e Indicadores', category: 'herramientas', level: 4 },
 
-  // AI & Orchestrators
-  { id: 'gentle-ai', name: 'Gentle-AI', category: 'ai', level: 4 },
-  { id: 'kimi', name: 'Kimi K2', category: 'ai', level: 3 },
-  { id: 'deepseek', name: 'DeepSeek', category: 'ai', level: 3 },
-  { id: 'gemini', name: 'Gemini', category: 'ai', level: 4 },
-  { id: 'claude', name: 'Claude', category: 'ai', level: 4 },
-  { id: 'copilot', name: 'GitHub Copilot', category: 'ai', level: 5 },
+  // Habilidades Blandas
+  { id: 'liderazgo', name: 'Liderazgo', category: 'blandas', level: 5 },
+  { id: 'comunicacion', name: 'Comunicación Asertiva', category: 'blandas', level: 5 },
+  { id: 'equipo', name: 'Trabajo en Equipo', category: 'blandas', level: 5 },
+  { id: 'ingles', name: 'Inglés', category: 'blandas', level: 3 },
 ] as const;

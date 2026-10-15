@@ -5,7 +5,9 @@ import { BackToTop } from './components/BackToTop';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Skills } from './sections/Skills';
+import { Approach } from './sections/Approach';
 import { Experience } from './sections/Experience';
+import { FAQ } from './sections/FAQ';
 import { Projects } from './sections/Projects';
 import { Contact } from './sections/Contact';
 import { Footer } from './sections/Footer';
@@ -31,7 +33,9 @@ function App(): JSX.Element {
         <Hero />
         <About />
         <Skills />
+        <Approach />
         <Experience />
+        <FAQ />
         <Projects />
         <Contact />
       </main>

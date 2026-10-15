@@ -11,7 +11,7 @@
  * per REQ-10 (a11y).
  */
 export type SocialLink = {
-  id: 'github' | 'linkedin' | 'email' | 'twitter' | 'mastodon' | 'whatsapp';
+  id: 'github' | 'linkedin' | 'email' | 'twitter' | 'mastodon' | 'whatsapp' | 'phone' | 'instagram' | 'facebook';
   url: string;
   labelKey: string;
 };

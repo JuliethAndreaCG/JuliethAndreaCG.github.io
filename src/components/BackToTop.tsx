@@ -31,7 +31,7 @@ export function BackToTop(): JSX.Element | null {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }}
       aria-label="Back to top"
-      className="fixed bottom-6 right-6 z-40 inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+      className="fixed bottom-6 right-6 z-40 inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-md transition-colors hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500"
     >
       <svg
         viewBox="0 0 24 24"
