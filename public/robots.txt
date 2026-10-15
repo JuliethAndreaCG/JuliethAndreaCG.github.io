@@ -1,6 +1,9 @@
-# Allow all crawlers full access to the site.
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# Tell crawlers where the sitemap lives.
-Sitemap: https://jospitia.github.io/sitemap.xml
+# Sitemap
+Sitemap: https://juliethandreacg.github.io/sitemap.xml
+
+# Crawl-delay (opcional, para no saturar el servidor)
+Crawl-delay: 1

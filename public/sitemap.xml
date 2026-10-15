@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Single-page portfolio: one entry pointing to the site root. Bump en cada
-     cambio SEO/índice para señalar a los crawlers que vuelvan a leer. -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://jospitia.github.io/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <loc>https://juliethandreacg.github.io/</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://juliethandreacg.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://juliethandreacg.github.io/?lang=en"/>
+    <image:image>
+      <image:loc>https://juliethandreacg.github.io/og-banner.jpg</image:loc>
+      <image:title>Julieth Andrea Caicedo Goyeneche - Psicóloga Clínica y Organizacional</image:title>
+    </image:image>
   </url>
 </urlset>
