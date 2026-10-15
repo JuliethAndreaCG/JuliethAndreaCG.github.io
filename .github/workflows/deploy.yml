@@ -48,6 +48,12 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Required by actions/deploy-pages — the job MUST declare the
+    # github-pages environment or the Pages deployment API call
+    # returns 400 "Missing environment".
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -55,7 +61,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
           cache: npm
 
       - name: Install dependencies
