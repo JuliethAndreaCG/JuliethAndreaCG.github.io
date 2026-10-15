@@ -1,14 +1,18 @@
 // Service Worker — PsicoJuliethCG / Esencia&Mental
 //
-// CACHE_NAME bumped to v3:
+// CACHE_NAME bumped to v4:
 // - v1 pointed at /og-banner.png (404, was the original bug)
 // - v2 fixed the path but kept a cache-first strategy for HTML, which
 //   caused mobile users to see stale content after deploys (a SW-installed
 //   page kept serving the pre-deploy /index.html from cache indefinitely).
-// - v3 introduces a network-first strategy for HTML documents so the next
-//   deploy is visible on the very next reload, while still allowing the
-//   SW to fall back to the cached copy when the user is offline.
-const CACHE_NAME = 'psicologa-julieth-v3';
+// - v3 introduced a network-first strategy for HTML documents so the
+//   next deploy is visible on the very next reload.
+// - v4 keeps v3's strategy and adds no-op protections: when a user
+//   visits with an OLD SW installed, the new SW skips waiting and claims
+//   the open tab, which the page then auto-reloads on controllerchange.
+//   This guarantees mobile users see the new content on the very next
+//   visit, with no manual cache clearing.
+const CACHE_NAME = 'psicologa-julieth-v4';
 
 // Pre-cache the static shell at install. These URLs are content-addressed
 // (hashed asset filenames) or rarely-changed, so a cache-first read is safe.

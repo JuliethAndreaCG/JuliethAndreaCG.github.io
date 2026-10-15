@@ -278,11 +278,31 @@
     </noscript>
 
     <script>
+      // Service Worker — registered with updateViaCache:'none' so the
+      // browser never serves a stale /sw.js from its HTTP cache. On every
+      // page load we also call registration.update() to check for a new
+      // SW in the background. If a new SW takes over (via skipWaiting +
+      // clients.claim inside sw.js), the controllerchange listener below
+      // forces a reload so the page picks up the new HTML.
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('SW registered'))
-            .catch(err => console.log('SW registration failed:', err));
+          navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' })
+            .then((reg) => {
+              console.log('SW registered');
+              // Eagerly check for a newer SW on every page load.
+              reg.update();
+            })
+            .catch((err) => console.log('SW registration failed:', err));
+
+          // When a new SW finishes installing and claims this page, the
+          // browser fires controllerchange. We reload so the page fetches
+          // fresh HTML under the new SW's control (network-first for HTML).
+          let reloading = false;
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (reloading) return;
+            reloading = true;
+            window.location.reload();
+          });
         });
       }
     </script>
