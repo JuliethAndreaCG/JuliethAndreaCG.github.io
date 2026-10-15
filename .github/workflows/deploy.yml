@@ -68,6 +68,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Overwrite root index.html with the built version
+        # Pages serves / from the root of the main branch. The root
+        # index.html is the Vite dev template (references /src/main.tsx
+        # which does not exist in production), so we replace it with
+        # the built index.html that references /assets/index-*.js (which
+        # we will commit in the next step). After the first deploy,
+        # `npm run dev` locally breaks because the dev template is gone;
+        # restore it with `git checkout HEAD~1 -- index.html`.
+        run: cp dist/index.html index.html
+
       - name: Force-deploy dist/ to main
         run: |
           git config user.name "github-actions[bot]"
@@ -76,9 +86,10 @@ jobs:
           # build output committed so GitHub Pages (which serves from
           # the main branch) can pick it up without any UI toggle.
           git add -f dist
-          # Also force-add specific public assets in case they are
-          # gitignored at the root (they are not today, but be safe).
-          git add -f public 2>/dev/null || true
+          # The root index.html was overwritten with the built version
+          # in the previous step. Stage it explicitly (it is already
+          # tracked so -f is not strictly required, but be defensive).
+          git add -f index.html
           if git diff --cached --quiet; then
             echo "No dist changes to commit"
           else
