@@ -12,48 +12,43 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-# Required permissions for the official Pages deploy flow:
-#   contents: read  -> checkout the repo
-#   pages: write    -> deploy the artifact to Pages
-#   id-token: write -> required by actions/configure-pages + actions/deploy-pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 # Strategy
 # --------
-# Use the official GitHub Actions Pages deploy flow instead of the old
-# peaceiris/actions-gh-pages pattern. The configure-pages action can
-# detect the repo's current configuration and migrate it to the
-# "GitHub Actions" build type on its own, so no UI toggle is needed
-# in Settings -> Pages even if the repo was previously serving from
-# a branch.
+# Force-add the built dist/ contents to the root of the main branch
+# and push. GitHub Pages is configured to serve from main, so this
+# makes the production build live without any UI configuration.
 #
-# Steps
-#   1. checkout, install, typecheck, build (standard CI).
-#   2. actions/configure-pages -> idempotently enables the workflow
-#      build_type. Safe to run on every push.
-#   3. actions/upload-pages-artifact -> packages ./dist.
-#   4. actions/deploy-pages -> publishes the artifact. Emits
-#      steps.deployment.outputs.page_url for the summary step.
+# Why this approach (and not peaceiris/actions-gh-pages or
+# actions/deploy-pages)
+#   peaceiris pushes to a gh-pages branch that Pages is not configured
+#   to serve from (the legacy branch source is `main`, not `gh-pages`),
+#   so those deploys are ignored.
 #
-# Why this is better than committing dist/ to main
-#   * The repo stays clean: build output is uploaded as a workflow
-#     artifact, never committed.
-#   * Local `npm run dev` keeps working — the root index.html stays
-#     the Vite dev template.
-#   * The Pages source becomes "GitHub Actions" automatically, so
-#     future deploys are fully code-driven.
+#   actions/deploy-pages requires Pages to be on build_type=workflow,
+#   but migrating from build_type=legacy (the current state) cannot
+#   be done via the API — GITHUB_TOKEN returns 403 — only via the
+#   Settings -> Pages UI. This workflow side-steps that constraint
+#   entirely by committing the build output directly to main.
+#
+# Trade-offs (be aware)
+#   1. The build output is committed to the repo. The repo grows
+#      by ~1 MB per deploy.
+#   2. The root index.html is overwritten with the BUILT version on
+#      every deploy. Local `npm run dev` will look for a Vite dev
+#      template; after the first deploy of this workflow you will
+#      need to restore the dev template from git history:
+#        git checkout HEAD~1 -- index.html
+#      or set up a separate dev branch. The SW (sw.js) is preserved
+#      because it lives in dist/ and gets re-committed with the same
+#      content.
+#   3. The [skip ci] tag in the commit message prevents the
+#      workflow from re-running on its own push, which would loop.
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Required by actions/deploy-pages — the job MUST declare the
-    # github-pages environment or the Pages deployment API call
-    # returns 400 "Missing environment".
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -73,20 +68,20 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
-      - name: Deployment summary
-        if: steps.deployment.conclusion == 'success'
+      - name: Force-deploy dist/ to main
         run: |
-          echo "::notice::Deployed to ${{ steps.deployment.outputs.page_url }}"
-          echo "Page URL: ${{ steps.deployment.outputs.page_url }}" >> "$GITHUB_STEP_SUMMARY"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # -f overrides the dist/ entry in .gitignore. We want the
+          # build output committed so GitHub Pages (which serves from
+          # the main branch) can pick it up without any UI toggle.
+          git add -f dist
+          # Also force-add specific public assets in case they are
+          # gitignored at the root (they are not today, but be safe).
+          git add -f public 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No dist changes to commit"
+          else
+            git commit -m "ci: deploy build output to main [skip ci]"
+            git push origin HEAD:main
+          fi

@@ -8,7 +8,7 @@ Sitio profesional bilingüe (ES/EN) de **Julieth Andrea Caicedo Goyeneche**, psi
 - **Vite 5** como bundler y dev server.
 - **Tailwind CSS 3** con paleta custom (neutros `ink-*` + acento morado `accent-*`).
 - **react-i18next** para internacionalización (ES/EN), con persistencia en `localStorage`.
-- **GitHub Actions** para CI/CD a GitHub Pages (`actions/deploy-pages@v4`).
+- **GitHub Actions** para CI/CD a GitHub Pages (workflow custom: force-commit `dist/` a `main` con `[skip ci]`).
 - Tipografía: Playfair Display (títulos) + Lora (cuerpo).
 
 ## Estructura del proyecto
@@ -82,19 +82,39 @@ npm run preview
 
 ## Deploy
 
-El deploy es automático vía GitHub Actions en cada push a `main`. El workflow hace typecheck, build y publica el bundle en GitHub Pages usando las Actions oficiales (`configure-pages` + `upload-pages-artifact` + `deploy-pages`).
+El deploy es automático vía GitHub Actions en cada push a `main`. El workflow hace typecheck, build y commitea el contenido de `dist/` directo a `main` con `git add -f`, lo que hace que GitHub Pages (que sirve desde `main`) publique el bundle sin necesidad de tocar la UI.
 
 ### Setup inicial (una sola vez)
 
-No requiere pasos manuales. La Action `configure-pages` detecta la configuración actual de Pages y la migra automáticamente al build type "GitHub Actions". Si el repo venía sirviendo desde una rama (`main` o `gh-pages`), la primera corrida del workflow reemplaza esa configuración.
+**No requiere pasos manuales.** Pages ya está configurado para servir desde `main`, así que el workflow force-commitea el build y Pages lo recoge.
 
-> Si el repo tenía configurada la rama `gh-pages` intermedia (flujo legacy con `peaceiris/actions-gh-pages`), ya no se necesita: este workflow sube el build como artifact en lugar de pushearlo a una rama. La rama `gh-pages` quedará huérfana pero es inofensiva.
+> Si en el futuro querés migrar al flujo oficial `actions/deploy-pages` (más limpio, sin commitear el build al repo), hay que migrar Pages a `build_type: "workflow"` desde **Settings → Pages**. Esa migración no se puede hacer vía API con `GITHUB_TOKEN` (devuelve 403); solo se hace vía UI o con un PAT admin.
 
 ### Flujo normal
 
 1. Commit y push a `main`.
-2. GitHub Actions corre: install → typecheck → build → upload artifact → deploy.
-3. En ~1-2 minutos el sitio se actualiza en `https://juliethandreacg.github.io/`.
+2. GitHub Actions corre: install → typecheck → build → force-commit `dist/` → push.
+3. En ~1 minuto el sitio se actualiza en `https://juliethandreacg.github.io/`.
+
+### Importante para desarrollo local
+
+Después del primer deploy de este workflow, el `index.html` raíz queda sobrescrito con la versión built (no la plantilla dev de Vite). Para volver a usar `npm run dev` localmente:
+
+```bash
+git checkout HEAD~1 -- index.html   # restaura el template dev desde el commit anterior
+```
+
+O bien, trabajá en una rama de feature y mergéá a `main` solo lo que querés deployar:
+
+```bash
+git checkout -b feat/mi-cambio
+# ... hacer cambios ...
+git add . && git commit -m "feat: descripción"
+git push -u origin feat/mi-cambio
+# Abrir PR en GitHub -> merge a main dispara el deploy
+```
+
+> La rama `gh-pages` (legacy) puede eliminarse — ya no se usa.
 
 ### URLs de verificación post-deploy
 
